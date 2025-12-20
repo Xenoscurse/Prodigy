@@ -3,59 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Osium - Minecraft Texture Optimizer</title>
-    <meta name="description" content="Transform Minecraft with liquid-smooth performance. Advanced GPU-level texture optimization.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23ffffff%22>✨</text></svg>">
+    <title>Osium - Performance Optimizer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23ffffff%22>⚡</text></svg>">
     <style>
-        /* LIQUID GLASS iOS 26 STYLE */
         :root {
-            /* Glass Morphism */
-            --glass-bg: rgba(10, 10, 20, 0.7);
-            --glass-card: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --glass-highlight: rgba(255, 255, 255, 0.2);
+            /* Chrome & Black Theme */
+            --chrome-base: #0a0a0a;
+            --chrome-dark: #000000;
+            --chrome-light: #1a1a1a;
+            --chrome-border: rgba(255, 255, 255, 0.12);
+            --chrome-highlight: rgba(255, 255, 255, 0.08);
             
-            /* Gradient Accents */
-            --accent-primary: linear-gradient(135deg, #8A8AFF 0%, #6C6CFF 100%);
-            --accent-secondary: linear-gradient(135deg, #FF8A8A 0%, #FF6C6C 100%);
+            /* Accent Chrome */
+            --chrome-accent: linear-gradient(135deg, #e5e5e5 0%, #ffffff 100%);
+            --chrome-glow: rgba(255, 255, 255, 0.15);
             
-            /* Text Colors */
+            /* Text */
             --text-primary: rgba(255, 255, 255, 0.95);
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --text-tertiary: rgba(255, 255, 255, 0.5);
-            
-            /* Background */
-            --bg-base: #000010;
-            --bg-gradient: radial-gradient(circle at 20% 50%, #1A1A2E 0%, #000010 100%);
+            --text-secondary: rgba(255, 255, 255, 0.6);
             
             /* Effects */
-            --blur-amount: 20px;
-            --transition-smooth: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-            --glass-radius: 24px;
-            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --blur-sm: 8px;
+            --blur-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-sm: 12px;
+            --radius-lg: 20px;
+            --radius-full: 100px;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
         
         body {
-            font-family: -apple-system, 'SF Pro Display', system-ui, sans-serif;
-            background: var(--bg-base);
-            background-image: var(--bg-gradient);
+            font-family: -apple-system, system-ui, sans-serif;
+            background: var(--chrome-base);
             color: var(--text-primary);
-            line-height: 1.6;
             min-height: 100vh;
             overflow-x: hidden;
             font-weight: 400;
             -webkit-font-smoothing: antialiased;
-            scroll-behavior: smooth;
         }
         
-        /* Liquid Background */
+        /* Chrome Background Effects */
         body::before {
             content: '';
             position: fixed;
@@ -64,59 +56,52 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 15% 20%, rgba(138, 138, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 85% 30%, rgba(255, 138, 138, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 50% 80%, rgba(108, 108, 255, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                linear-gradient(180deg, var(--chrome-dark) 0%, var(--chrome-base) 100%);
             pointer-events: none;
             z-index: -1;
-            animation: liquidFloat 20s ease-in-out infinite;
         }
         
-        @keyframes liquidFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(-10px, 10px) scale(1.02); }
-            66% { transform: translate(10px, -10px) scale(0.98); }
-        }
-        
-        /* Glass Container */
-        .glass-container {
-            background: var(--glass-card);
-            backdrop-filter: blur(var(--blur-amount));
-            -webkit-backdrop-filter: blur(var(--blur-amount));
-            border: 1px solid var(--glass-border);
-            border-radius: var(--glass-radius);
-            box-shadow: var(--glass-shadow);
-            transition: var(--transition-smooth);
+        /* Chrome Glass */
+        .chrome-glass {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+            -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+            border: 1px solid var(--chrome-border);
+            border-radius: var(--radius-lg);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
         
-        .glass-container::before {
+        .chrome-glass::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.05) 50%, 
+                rgba(255, 255, 255, 0) 100%);
+            pointer-events: none;
         }
         
-        .glass-container:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        .chrome-glass:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         
-        /* Fixed Top Navigation */
-        .navbar {
+        /* Minimal Navigation */
+        .nav {
             position: fixed;
-            top: 20px;
+            top: 24px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
-            max-width: 600px;
-            z-index: 1000;
-            padding: 0.8rem 2rem;
+            max-width: 500px;
+            z-index: 100;
+            padding: 12px 24px;
         }
         
         .nav-content {
@@ -126,86 +111,56 @@
         }
         
         .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            background: var(--accent-primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: var(--chrome-accent);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
             text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-        
-        .logo:hover {
-            opacity: 0.9;
-            transform: scale(1.05);
+            letter-spacing: -0.5px;
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 16px;
         }
         
-        .nav-links a {
+        .nav-link {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            transition: var(--transition-smooth);
-            position: relative;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            transition: var(--transition);
         }
         
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: var(--accent-primary);
-            border-radius: 2px;
-            transition: var(--transition-smooth);
-        }
-        
-        /* FIXED: Hover states don't override active state */
-        .nav-links a:hover:not(.active),
-        .nav-links a.active {
+        .nav-link:hover,
+        .nav-link.active {
             color: var(--text-primary);
             background: rgba(255, 255, 255, 0.05);
         }
         
-        .nav-links a:hover:not(.active)::after,
-        .nav-links a.active::after {
-            width: 20px;
-        }
-        
-        /* Hero Section */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6rem 2rem 4rem;
+            padding: 80px 24px 40px;
             text-align: center;
-            position: relative;
         }
         
         .hero-content {
             max-width: 800px;
-            position: relative;
-            z-index: 1;
         }
         
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: var(--accent-primary);
+            background: var(--chrome-accent);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -213,77 +168,70 @@
         }
         
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            margin-bottom: 3rem;
-            line-height: 1.8;
+            line-height: 1.6;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 3rem;
         }
         
-        /* Action Buttons */
-        .action-buttons {
+        /* Buttons */
+        .buttons {
             display: flex;
-            gap: 1rem;
+            gap: 16px;
             justify-content: center;
-            margin: 3rem 0;
             flex-wrap: wrap;
         }
         
         .btn {
-            padding: 1rem 2rem;
-            border-radius: 50px;
+            padding: 14px 32px;
+            border-radius: var(--radius-full);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition-smooth);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            overflow: hidden;
+            gap: 8px;
         }
         
         .btn-primary {
-            background: var(--accent-primary);
-            color: white;
-            box-shadow: 0 4px 20px rgba(138, 138, 255, 0.3);
+            background: var(--chrome-accent);
+            color: var(--chrome-dark);
+            font-weight: 600;
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 30px rgba(138, 138, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
         }
         
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             color: var(--text-primary);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--chrome-border);
         }
         
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
         }
         
         /* Features */
-        .features {
-            padding: 6rem 2rem;
+        .section {
+            padding: 80px 24px;
         }
         
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 60px;
         }
         
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 600;
             margin-bottom: 1rem;
-            background: var(--accent-primary);
+            background: var(--chrome-accent);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -291,478 +239,375 @@
         
         .section-subtitle {
             color: var(--text-secondary);
-            font-size: 1.1rem;
-            max-width: 600px;
+            font-size: 1rem;
+            max-width: 500px;
             margin: 0 auto;
-            line-height: 1.8;
+            line-height: 1.6;
         }
         
-        .features-grid {
+        /* Grid */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
-        .feature-card {
-            padding: 2.5rem;
+        .card {
+            padding: 32px;
         }
         
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            transition: var(--transition-smooth);
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
         
-        .feature-card:hover .feature-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-        
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
             font-weight: 600;
         }
         
-        .feature-card p {
+        .card p {
             color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 1rem;
+            line-height: 1.6;
+            font-size: 0.9rem;
         }
         
         /* Stats */
-        .stats {
-            padding: 4rem 2rem;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .stat {
+            padding: 24px;
             text-align: center;
         }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 3rem auto;
-        }
-        
-        .stat-item {
-            padding: 2rem;
-        }
-        
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            background: var(--accent-primary);
+            background: var(--chrome-accent);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             display: block;
             line-height: 1;
-            margin-bottom: 0.5rem;
-            transition: var(--transition-smooth);
-        }
-        
-        .stat-item:hover .stat-number {
-            transform: scale(1.1);
+            margin-bottom: 8px;
         }
         
         .stat-label {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
         
         /* Download */
-        .download {
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-        
-        .download-options {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .download-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
             max-width: 800px;
-            margin: 3rem auto;
+            margin: 40px auto;
         }
         
         .download-card {
-            padding: 2.5rem;
-            width: 300px;
+            padding: 32px;
+            text-align: center;
             text-decoration: none;
             color: inherit;
-            text-align: center;
         }
         
         .download-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-            transition: var(--transition-smooth);
-        }
-        
-        .download-card:hover .download-icon {
-            transform: translateY(-8px);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
         
         .download-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
             font-weight: 600;
         }
         
         .download-card p {
             color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 0.95rem;
+            line-height: 1.6;
+            font-size: 0.9rem;
         }
         
         /* Footer */
         .footer {
-            padding: 4rem 2rem 3rem;
+            padding: 60px 24px 40px;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 4rem;
-        }
-        
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
         }
         
         .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--accent-primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: var(--chrome-accent);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 1.5rem;
+            margin-bottom: 24px;
             display: inline-block;
         }
         
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 24px;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 32px;
         }
         
-        .footer-links a {
+        .footer-link {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
-            transition: var(--transition-smooth);
+            transition: var(--transition);
         }
         
-        .footer-links a:hover {
+        .footer-link:hover {
             color: var(--text-primary);
-            transform: translateY(-2px);
         }
         
         .footer-bottom {
-            color: var(--text-tertiary);
+            color: var(--text-secondary);
             font-size: 0.85rem;
-            padding-top: 2rem;
+            padding-top: 32px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         /* Back to Top */
-        .back-to-top {
+        .back-top {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--glass-card);
-            backdrop-filter: blur(var(--blur-amount));
-            border: 1px solid var(--glass-border);
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(var(--blur-sm));
+            border: 1px solid var(--chrome-border);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             color: var(--text-primary);
-            font-size: 1.2rem;
             opacity: 0;
             visibility: hidden;
             transform: translateY(20px);
-            transition: var(--transition-smooth);
-            z-index: 999;
-            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+            z-index: 99;
         }
         
-        .back-to-top.visible {
+        .back-top.visible {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
         
-        .back-to-top:hover {
-            transform: translateY(-5px) scale(1.1);
-            border-color: var(--glass-highlight);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        .back-top:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .section-title { font-size: 2rem; }
-            .navbar { width: 95%; padding: 0.8rem 1.5rem; }
-            .nav-links { gap: 1rem; }
-            .features-grid { grid-template-columns: 1fr; }
-            .download-options { flex-direction: column; align-items: center; }
-            .download-card { width: 100%; max-width: 400px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .action-buttons { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 300px; justify-content: center; }
+            .hero-title { font-size: 2.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .nav { padding: 12px 20px; }
+            .nav-links { gap: 12px; }
+            .nav-link { padding: 6px 12px; font-size: 0.85rem; }
+            .buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
+            .grid { grid-template-columns: 1fr; }
+            .download-cards { grid-template-columns: 1fr; }
         }
         
         @media (max-width: 480px) {
-            .hero-title { font-size: 2rem; }
-            .hero-subtitle { font-size: 1.1rem; }
-            .section-title { font-size: 1.8rem; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .nav-links { font-size: 0.8rem; gap: 0.5rem; }
-        }
-        
-        /* Active Section Highlighter */
-        .section-highlight {
-            position: relative;
-        }
-        
-        .section-highlight::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 20px;
-            background: var(--accent-primary);
-            border-radius: 2px;
-            opacity: 0;
-            transition: var(--transition-smooth);
-        }
-        
-        .section-highlight.active::before {
-            opacity: 1;
+            .hero-title { font-size: 1.8rem; }
+            .section-title { font-size: 1.5rem; }
+            .nav-links { display: none; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar glass-container">
+    <nav class="nav chrome-glass">
         <div class="nav-content">
-            <a href="#home" class="logo">Osium</a>
+            <a href="#home" class="logo">OSIUM</a>
             <div class="nav-links">
-                <a href="#home" class="active">Home</a>
-                <a href="#features">Features</a>
-                <a href="#stats">Performance</a>
-                <a href="#download">Download</a>
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#stats" class="nav-link">Stats</a>
+                <a href="#download" class="nav-link">Download</a>
             </div>
         </div>
     </nav>
     
     <!-- Back to Top -->
-    <a href="#home" class="back-to-top glass-container" id="back-to-top">
+    <a href="#home" class="back-top chrome-glass" id="back-top">
         ↑
     </a>
     
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Buttery Smooth Minecraft</h1>
-            
+            <h1 class="hero-title">Maximum Performance</h1>
             <p class="hero-subtitle">
-                Transform choppy gameplay into liquid-smooth performance with advanced GPU-level texture optimization. 
-                Experience Minecraft like never before.
+                Advanced GPU optimization for buttery-smooth gameplay. Minimal overhead, maximum frames.
             </p>
-            
-            <div class="action-buttons">
-                <a href="#download" class="btn btn-primary glass-container">
-                    <span>📥</span> Download
+            <div class="buttons">
+                <a href="#download" class="btn btn-primary chrome-glass">
+                    ⚡ Download
                 </a>
-                <a href="#features" class="btn btn-secondary glass-container">
-                    <span>✨</span> Learn More
+                <a href="#features" class="btn btn-secondary chrome-glass">
+                    Learn More
                 </a>
             </div>
         </div>
     </section>
     
     <!-- Features -->
-    <section id="features" class="features">
+    <section id="features" class="section">
         <div class="section-header">
-            <h2 class="section-title">Advanced Optimization</h2>
+            <h2 class="section-title">Advanced Features</h2>
             <p class="section-subtitle">
-                Smart technology that makes Minecraft feel fundamentally better.
+                Smart optimization technology that works seamlessly in the background
             </p>
         </div>
-        
-        <div class="features-grid">
-            <div class="feature-card glass-container">
-                <div class="feature-icon">⚡</div>
+        <div class="grid">
+            <div class="card chrome-glass">
+                <div class="card-icon">⚡</div>
                 <h3>GPU Acceleration</h3>
-                <p>Leverages modern GPU capabilities for real-time texture processing and zero-overhead optimization.</p>
+                <p>Hardware-level optimization for zero-overhead performance gains</p>
             </div>
-            
-            <div class="feature-card glass-container">
-                <div class="feature-icon">🌀</div>
-                <h3>Intelligent Streaming</h3>
-                <p>Dynamic texture loading system that adapts to your hardware and gameplay patterns.</p>
+            <div class="card chrome-glass">
+                <div class="card-icon">🌀</div>
+                <h3>Smart Caching</h3>
+                <p>Intelligent texture streaming with adaptive memory management</p>
             </div>
-            
-            <div class="feature-card glass-container">
-                <div class="feature-icon">🔌</div>
+            <div class="card chrome-glass">
+                <div class="card-icon">🔌</div>
                 <h3>Full Compatibility</h3>
-                <p>Works seamlessly with Fabric, Sodium, Iris, and all your favorite mods.</p>
-            </div>
-            
-            <div class="feature-card glass-container">
-                <div class="feature-icon">📊</div>
-                <h3>Real-time Analytics</h3>
-                <p>Advanced performance monitoring with actionable insights for optimal gameplay.</p>
-            </div>
-            
-            <div class="feature-card glass-container">
-                <div class="feature-icon">🤖</div>
-                <h3>Auto Configuration</h3>
-                <p>Self-optimizing settings that adapt to your system specifications automatically.</p>
-            </div>
-            
-            <div class="feature-card glass-container">
-                <div class="feature-icon">🚀</div>
-                <h3>Future Ready</h3>
-                <p>Built for next-generation Minecraft rendering and upcoming GPU technologies.</p>
+                <p>Works with Fabric, Sodium, Iris, and all popular mods</p>
             </div>
         </div>
     </section>
     
     <!-- Stats -->
-    <section id="stats" class="stats">
+    <section id="stats" class="section">
         <div class="section-header">
             <h2 class="section-title">Performance Metrics</h2>
             <p class="section-subtitle">
-                Real results from actual gameplay sessions.
+                Real-world results from optimized gameplay sessions
             </p>
         </div>
-        
         <div class="stats-grid">
-            <div class="stat-item glass-container">
+            <div class="stat chrome-glass">
                 <span class="stat-number" data-count="87">0</span>
-                <span class="stat-label">Average FPS Boost</span>
+                <span class="stat-label">FPS Boost</span>
             </div>
-            
-            <div class="stat-item glass-container">
+            <div class="stat chrome-glass">
                 <span class="stat-number" data-count="94">0</span>
-                <span class="stat-label">Texture Efficiency</span>
+                <span class="stat-label">Efficiency</span>
             </div>
-            
-            <div class="stat-item glass-container">
+            <div class="stat chrome-glass">
                 <span class="stat-number" data-count="0">0</span>
-                <span class="stat-label">Added Latency</span>
+                <span class="stat-label">Latency</span>
             </div>
-            
-            <div class="stat-item glass-container">
+            <div class="stat chrome-glass">
                 <span class="stat-number">∞</span>
-                <span class="stat-label">Player Satisfaction</span>
+                <span class="stat-label">Satisfaction</span>
             </div>
         </div>
     </section>
     
     <!-- Download -->
-    <section id="download" class="download">
+    <section id="download" class="section">
         <div class="section-header">
-            <h2 class="section-title">Ready to Experience Smooth?</h2>
+            <h2 class="section-title">Get Started</h2>
             <p class="section-subtitle">
-                Join thousands of players who've transformed their Minecraft experience.
+                Join thousands of players experiencing smoother gameplay
             </p>
         </div>
-        
-        <div class="download-options">
-            <a href="https://modrinth.com" target="_blank" class="download-card glass-container">
+        <div class="download-cards">
+            <a href="https://modrinth.com" target="_blank" class="download-card chrome-glass">
                 <div class="download-icon">📦</div>
                 <h3>Modrinth</h3>
-                <p>Modern distribution platform with automated updates and version management.</p>
+                <p>Modern platform with automated updates and version management</p>
             </a>
-            
-            <a href="#" class="download-card glass-container">
-                <div class="download-icon">💻</div>
+            <a href="#" class="download-card chrome-glass">
+                <div class="download-icon">💾</div>
                 <h3>Direct Download</h3>
-                <p>Get the latest version straight from our servers. Simple and reliable.</p>
+                <p>Get the latest version directly from our servers</p>
             </a>
         </div>
     </section>
     
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">Osium</div>
-            
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#features">Features</a>
-                <a href="#stats">Performance</a>
-                <a href="#download">Download</a>
-                <a href="#">GitHub</a>
-                <a href="#">Support</a>
-            </div>
+        <div class="footer-logo">OSIUM</div>
+        <div class="footer-links">
+            <a href="#home" class="footer-link">Home</a>
+            <a href="#features" class="footer-link">Features</a>
+            <a href="#stats" class="footer-link">Stats</a>
+            <a href="#download" class="footer-link">Download</a>
+            <a href="#" class="footer-link">GitHub</a>
+            <a href="#" class="footer-link">Support</a>
         </div>
-        
         <div class="footer-bottom">
-            <p>© 2025 Osium. Made for the Minecraft community.</p>
-            <p style="margin-top: 0.5rem; opacity: 0.7;">
-                Not affiliated with Mojang. Minecraft is a trademark of Mojang Studios.
+            <p>© 2025 Osium. Made for the community.</p>
+            <p style="margin-top: 8px; opacity: 0.7; font-size: 0.8rem;">
+                Not affiliated with Mojang Studios.
             </p>
         </div>
     </footer>
     
     <script>
-        // Smooth scrolling with section highlighting - FIXED VERSION
-        document.querySelectorAll('.nav-links a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        // Smooth navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Remove active class from all nav links
-                    document.querySelectorAll('.nav-links a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    // Add active class to clicked link
+                if (target) {
+                    // Update active link
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Smooth scroll with offset for fixed navbar
+                    // Smooth scroll
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Reduced offset for better alignment
+                        top: target.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
         });
         
-        // Update active nav on scroll with better detection
+        // Update active link on scroll
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-links a');
+        const navLinks = document.querySelectorAll('.nav-link');
         
-        function updateActiveNav() {
+        function updateActiveLink() {
             let current = '';
-            const scrollPosition = window.scrollY + 80; // Adjusted offset
+            const scrollPos = window.scrollY + 100;
             
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.clientHeight) {
                     current = section.getAttribute('id');
                 }
             });
@@ -775,27 +620,23 @@
             });
         }
         
-        // Debounce scroll function for better performance
-        let scrollTimeout;
+        // Back to top
+        const backTop = document.getElementById('back-top');
+        
         window.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(updateActiveNav, 50);
+            updateActiveLink();
             
-            // Back to top button visibility
-            const backToTop = document.getElementById('back-to-top');
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
+            // Show back to top button
+            if (window.scrollY > 400) {
+                backTop.classList.add('visible');
             } else {
-                backToTop.classList.remove('visible');
+                backTop.classList.remove('visible');
             }
         });
         
-        // Initialize active nav on page load
-        updateActiveNav();
-        
         // Animate stats
-        const statNumbers = document.querySelectorAll('.stat-number');
         const statsSection = document.getElementById('stats');
+        const statNumbers = document.querySelectorAll('.stat-number');
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -805,23 +646,17 @@
                         if (!target) return;
                         
                         const targetNum = parseInt(target);
-                        const duration = 1800;
-                        const step = targetNum / (duration / 16);
                         let current = 0;
+                        const duration = 1500;
+                        const step = targetNum / (duration / 16);
                         
                         const timer = setInterval(() => {
                             current += step;
                             if (current >= targetNum) {
-                                stat.textContent = target + (stat.textContent.includes('%') ? '%' : '');
+                                stat.textContent = target;
                                 clearInterval(timer);
-                                
-                                // Celebration animation
-                                stat.style.transform = 'scale(1.1)';
-                                setTimeout(() => {
-                                    stat.style.transform = 'scale(1)';
-                                }, 300);
                             } else {
-                                stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : '');
+                                stat.textContent = Math.floor(current);
                             }
                         }, 16);
                     });
@@ -834,7 +669,7 @@
         if (statsSection) observer.observe(statsSection);
         
         // Initialize
-        console.log('%c✨ Osium Liquid Glass Website ✨', 'background: linear-gradient(135deg, #8A8AFF, #FF8A8A); color: white; padding: 10px 20px; border-radius: 10px; font-size: 14px;');
+        updateActiveLink();
     </script>
 </body>
 </html>
