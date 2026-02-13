@@ -260,11 +260,11 @@
                     Options
                 </button>
                 <div id="dropdownMenu" class="options-dropdown">
-                    <a href="#features" data-target="features">Features</a>
-                    <a href="#dashboard" data-target="dashboard">Dashboard</a>
-                    <a href="https://github.com/Xenoscurse/Prodigy" target="_blank">GitHub</a>
+                    <a href="#features" data-action="features">Features</a>
+                    <a href="#dashboard" data-action="dashboard">Dashboard</a>
+                    <a href="https://github.com/Xenoscurse/Prodigy" target="_blank" data-action="github">GitHub</a>
                     <div class="divider"></div>
-                    <button id="signInBtn">Sign In</button>
+                    <button id="dropdownSignInBtn" data-action="signin">Sign In</button>
                 </div>
             </div>
             
@@ -650,27 +650,35 @@
                     }
                 });
                 
-                const dropdownLinks = dropdownMenu.querySelectorAll('a, button');
-                dropdownLinks.forEach(item => {
+                // Handle dropdown items using data-action attribute
+                const dropdownItems = dropdownMenu.querySelectorAll('a, button');
+                dropdownItems.forEach(item => {
                     item.addEventListener('click', function(e) {
+                        const action = this.getAttribute('data-action');
+                        
+                        // Close dropdown
                         dropdownMenu.style.display = 'none';
                         
-                        if (this.textContent === 'Features') {
+                        // Handle different actions
+                        if (action === 'features') {
                             e.preventDefault();
                             document.getElementById('features').scrollIntoView({ 
                                 behavior: 'smooth',
                                 block: 'start'
                             });
-                        } else if (this.textContent === 'Dashboard') {
+                        } 
+                        else if (action === 'dashboard') {
                             e.preventDefault();
                             document.getElementById('dashboard').scrollIntoView({ 
                                 behavior: 'smooth',
                                 block: 'start'
                             });
-                        } else if (this.textContent === 'Sign In') {
+                        }
+                        else if (action === 'signin') {
                             e.preventDefault();
                             showLoginModal();
                         }
+                        // For GitHub link (action="github"), let it work normally
                     });
                 });
             }
@@ -816,7 +824,6 @@ public:
             // ===== LOGIN MODAL =====
             const loginModal = document.getElementById('loginModal');
             const modalContent = document.getElementById('modalContent');
-            const signInBtn = document.getElementById('signInBtn');
             const dashboardSignInBtn = document.getElementById('dashboardSignInBtn');
             const modalLoginBtn = document.getElementById('modalLoginBtn');
             
@@ -846,10 +853,6 @@ public:
             
             window.showLoginModal = showLoginModal;
             window.hideLoginModal = hideLoginModal;
-            
-            if (signInBtn) {
-                signInBtn.addEventListener('click', showLoginModal);
-            }
             
             if (dashboardSignInBtn) {
                 dashboardSignInBtn.addEventListener('click', showLoginModal);
