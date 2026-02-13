@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culled - Purchase Premium Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: white;
+        }
+        .payment-card {
+            background: rgba(24, 24, 27, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <img src="https://raw.githubusercontent.com/Xenoscurse/Culled/main/culledlogo.gif" 
+                 alt="Culled Logo" class="w-20 h-20 mx-auto mb-4 rounded-2xl">
+            <h1 class="text-3xl font-bold bg-gradient-to-b from-white to-purple-200 bg-clip-text text-transparent">
+                Complete Your Purchase
+            </h1>
+            <p class="text-zinc-400 mt-2">Choose your payment method below</p>
+        </div>
+
+        <!-- Tier Selection -->
+        <div class="payment-card rounded-2xl p-6 mb-4">
+            <h2 class="text-xl font-bold text-white mb-4">Select Your Tier</h2>
+            <div class="space-y-3">
+                <label class="flex items-center justify-between p-4 bg-zinc-800/50 rounded-xl cursor-pointer hover:bg-zinc-800 transition">
+                    <div class="flex items-center gap-3">
+                        <input type="radio" name="tier" value="pro" class="accent-purple-600" checked>
+                        <div>
+                            <span class="font-bold text-white">Pro</span>
+                            <span class="text-sm text-zinc-400 block">Unlimited · Fast Speed</span>
+                        </div>
+                    </div>
+                    <span class="text-purple-400 font-bold">$5.99<span class="text-sm text-zinc-500">/mo</span></span>
+                </label>
+                
+                <label class="flex items-center justify-between p-4 bg-zinc-800/50 rounded-xl cursor-pointer hover:bg-zinc-800 transition">
+                    <div class="flex items-center gap-3">
+                        <input type="radio" name="tier" value="premium" class="accent-purple-600">
+                        <div>
+                            <span class="font-bold text-white">Premium</span>
+                            <span class="text-sm text-zinc-400 block">Ultra · Anti-Tamper</span>
+                        </div>
+                    </div>
+                    <span class="text-purple-400 font-bold">$7.99<span class="text-sm text-zinc-500">/mo</span></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="payment-card rounded-2xl p-6 mb-4">
+            <h2 class="text-xl font-bold text-white mb-4">Pay With</h2>
+            <div class="space-y-3">
+                <!-- Venmo -->
+                <a href="https://venmo.com/YOUR_VENMO_USERNAME" 
+                   target="_blank"
+                   class="flex items-center gap-4 p-4 bg-zinc-800/50 rounded-xl hover:bg-zinc-800 transition">
+                    <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center">
+                        <span class="text-blue-400 text-xl">💸</span>
+                    </div>
+                    <div class="flex-1">
+                        <span class="font-bold text-white">Venmo</span>
+                        <span class="text-sm text-zinc-400 block">@YOUR_VENMO_USERNAME</span>
+                    </div>
+                    <span class="text-zinc-400">→</span>
+                </a>
+
+                <!-- CashApp -->
+                <a href="https://cash.app/$YOUR_CASHTAG" 
+                   target="_blank"
+                   class="flex items-center gap-4 p-4 bg-zinc-800/50 rounded-xl hover:bg-zinc-800 transition">
+                    <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
+                        <span class="text-green-400 text-xl">💵</span>
+                    </div>
+                    <div class="flex-1">
+                        <span class="font-bold text-white">CashApp</span>
+                        <span class="text-sm text-zinc-400 block">$YOUR_CASHTAG</span>
+                    </div>
+                    <span class="text-zinc-400">→</span>
+                </a>
+
+                <!-- PayPal -->
+                <a href="https://paypal.me/YOUR_PAYPAL" 
+                   target="_blank"
+                   class="flex items-center gap-4 p-4 bg-zinc-800/50 rounded-xl hover:bg-zinc-800 transition">
+                    <div class="w-10 h-10 bg-blue-600/20 rounded-full flex items-center justify-center">
+                        <span class="text-blue-500 text-xl">🅿️</span>
+                    </div>
+                    <div class="flex-1">
+                        <span class="font-bold text-white">PayPal</span>
+                        <span class="text-sm text-zinc-400 block">@YOUR_PAYPAL</span>
+                    </div>
+                    <span class="text-zinc-400">→</span>
+                </a>
+
+                <!-- Crypto (Optional) -->
+                <a href="#"
+                   onclick="copyAddress()"
+                   class="flex items-center gap-4 p-4 bg-zinc-800/50 rounded-xl hover:bg-zinc-800 transition cursor-pointer">
+                    <div class="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center">
+                        <span class="text-purple-400 text-xl">🔷</span>
+                    </div>
+                    <div class="flex-1">
+                        <span class="font-bold text-white">Crypto</span>
+                        <span class="text-sm text-zinc-400 block" id="crypto-address">Click to copy address</span>
+                    </div>
+                    <span class="text-zinc-400">📋</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="payment-card rounded-2xl p-6">
+            <h2 class="text-xl font-bold text-white mb-4">After Payment</h2>
+            <ol class="space-y-3 text-zinc-300 text-sm">
+                <li class="flex gap-3">
+                    <span class="w-6 h-6 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 flex-shrink-0">1</span>
+                    <span>Send payment via your chosen method</span>
+                </li>
+                <li class="flex gap-3">
+                    <span class="w-6 h-6 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 flex-shrink-0">2</span>
+                    <span>Email your transaction ID to: <span class="text-purple-400">culled@proton.me</span></span>
+                </li>
+                <li class="flex gap-3">
+                    <span class="w-6 h-6 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 flex-shrink-0">3</span>
+                    <span>You'll receive your license key within 24 hours</span>
+                </li>
+            </ol>
+            
+            <!-- Email Button -->
+            <a href="mailto:culled@proton.me?subject=Payment%20Confirmation&body=Tier%3A%20Pro%0ATransaction%20ID%3A%20" 
+               class="block w-full mt-6 py-3 bg-purple-600 text-white text-center rounded-xl hover:bg-purple-700 transition">
+                📧 Email Payment Confirmation
+            </a>
+        </div>
+
+        <!-- Back Link -->
+        <div class="text-center mt-6">
+            <a href="https://xenoscurse.github.io/Culled/" class="text-sm text-zinc-500 hover:text-zinc-300">
+                ← Back to Obfuscator
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Get selected tier
+        document.querySelectorAll('input[name="tier"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const emailLink = document.querySelector('a[href^="mailto:"]');
+                const tier = this.value;
+                emailLink.href = `mailto:culled@proton.me?subject=Payment%20Confirmation&body=Tier%3A%20${tier.charAt(0).toUpperCase() + tier.slice(1)}%0ATransaction%20ID%3A%20`;
+            });
+        });
+
+        // Copy crypto address
+        window.copyAddress = function() {
+            const address = '0x742d35Cc6634C0532925a3b844Bc454e4438f44e';
+            navigator.clipboard.writeText(address);
+            const span = document.getElementById('crypto-address');
+            const original = span.textContent;
+            span.textContent = '✅ Copied!';
+            setTimeout(() => {
+                span.textContent = original;
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
