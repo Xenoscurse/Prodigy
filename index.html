@@ -511,8 +511,8 @@ end</textarea>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">military-grade</h3>
-                    <p class="text-zinc-400 text-sm">control flow, anti-tamper, junk code</p>
+                    <h3 class="text-xl font-bold mb-2">Military-Grade</h3>
+                    <p class="text-zinc-400 text-sm">Control Flow, Anti-Tamper, Junk Code</p>
                 </div>
                 <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-2xl p-6 text-center">
                     <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -520,8 +520,8 @@ end</textarea>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">blazing fast</h3>
-                    <p class="text-zinc-400 text-sm">ultra processing on premium tier</p>
+                    <h3 class="text-xl font-bold mb-2">Blazing Fast</h3>
+                    <p class="text-zinc-400 text-sm">Ultra Processing on Premium tier</p>
                 </div>
                 <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-2xl p-6 text-center">
                     <div class="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -529,8 +529,8 @@ end</textarea>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">unlimited</h3>
-                    <p class="text-zinc-400 text-sm">pro and premium tiers</p>
+                    <h3 class="text-xl font-bold mb-2">Unlimited</h3>
+                    <p class="text-zinc-400 text-sm">Pro and Premium tiers</p>
                 </div>
             </div>
         </section>
@@ -680,7 +680,7 @@ end</textarea>
         }
 
         // =============================================
-        // AUTHENTICATION (DISCORD MOCK)
+        // AUTHENTICATION (DISCORD) - UPDATED WITH REAL OAUTH
         // =============================================
         function showLoginModal() {
             document.getElementById('loginModal').style.display = 'flex';
@@ -698,30 +698,14 @@ end</textarea>
             document.getElementById('cancelModal').style.display = 'none';
         }
 
+        // ✅ UPDATED: Real Discord OAuth redirect
         function loginWithDiscord() {
-            // In production, replace this with actual Discord OAuth redirect
-            // window.location.href = `https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=identify%20email`;
+            // Client ID 
+            const clientId = '1464021428725747733'; 
+            const redirectUri = encodeURIComponent('https://xenoscurse.github.io/Culled/callback.html');
+            const scope = encodeURIComponent('identify email');
             
-            // Mock Discord login for demo
-            const mockUser = {
-                username: 'culled_user',
-                global_name: 'Culled User',
-                email: 'user@discord.com',
-                avatar: 'https://cdn.discordapp.com/embed/avatars/0.png',
-                id: Date.now().toString(),
-                discriminator: '0001'
-            };
-            
-            currentUser.discordUser = mockUser;
-            localStorage.setItem('culled_discord_user', JSON.stringify(mockUser));
-            
-            hideLoginModal();
-            updateUI();
-            updateDashboard();
-            
-            // Update nav buttons
-            document.getElementById('loginBtn').classList.add('hidden');
-            document.getElementById('logoutBtn').classList.remove('hidden');
+            window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
         }
 
         function logout() {
