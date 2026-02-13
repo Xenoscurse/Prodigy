@@ -82,6 +82,35 @@
         select:hover {
             background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
         }
+
+        /* Shadow text effect for placeholder */
+        .shadow-placeholder::placeholder {
+            color: rgba(161, 161, 170, 0.3);
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+        
+        .shadow-placeholder:focus::placeholder {
+            color: rgba(161, 161, 170, 0.1);
+        }
+        
+        /* Options dropdown styling */
+        .options-dropdown {
+            background: rgba(24, 24, 27, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .options-dropdown a {
+            transition: all 0.2s ease;
+        }
+        
+        .options-dropdown a:hover {
+            background: rgba(168, 85, 247, 0.2);
+            color: white;
+        }
     </style>
 </head>
 <body class="min-h-screen text-white relative antialiased">
@@ -101,20 +130,27 @@
     </div>
 
     <div class="relative z-10">
-        <!-- ===== NAVIGATION ===== -->
+        <!-- ===== NAVIGATION WITH DROPDOWN ===== -->
         <nav class="fixed top-6 right-6 z-50 flex items-center gap-3">
-            <a href="#Features" class="px-4 py-2 bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-all duration-200 shadow-lg">
-                Features
-            </a>
-            <a href="#Dashboard" class="px-4 py-2 bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-all duration-200 shadow-lg">
-                Dashboard
-            </a>
-            <a href="https://github.com/Xenoscurse/Prodigy" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-all duration-200 shadow-lg">
-                GitHub
-            </a>
-            <button id="loginBtn" onclick="showLoginModal()" class="px-5 py-2 bg-white text-black text-sm font-medium rounded-xl hover:bg-zinc-100 transition-all duration-200 shadow-lg">
-                Sign In
-            </button>
+            <!-- Options Dropdown -->
+            <div class="relative" id="optionsDropdown">
+                <button onclick="toggleDropdown()" class="px-4 py-2 bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-all duration-200 shadow-lg flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    Options
+                </button>
+                <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 options-dropdown hidden">
+                    <div class="py-2">
+                        <a href="#Features" onclick="closeDropdown()" class="block px-4 py-2 text-sm text-zinc-300 hover:text-white transition-colors">Features</a>
+                        <a href="#Dashboard" onclick="closeDropdown()" class="block px-4 py-2 text-sm text-zinc-300 hover:text-white transition-colors">Dashboard</a>
+                        <a href="https://github.com/Xenoscurse/Prodigy" target="_blank" onclick="closeDropdown()" class="block px-4 py-2 text-sm text-zinc-300 hover:text-white transition-colors">GitHub</a>
+                        <div class="border-t border-zinc-800/50 my-2"></div>
+                        <button onclick="closeDropdown(); showLoginModal()" class="w-full text-left px-4 py-2 text-sm text-zinc-300 hover:text-white hover:bg-purple-500/20 transition-colors">Sign In</button>
+                    </div>
+                </div>
+            </div>
+            
             <button id="logoutBtn" onclick="logout()" class="hidden px-5 py-2 bg-zinc-700 text-white text-sm font-medium rounded-xl hover:bg-zinc-600 transition-all duration-200 shadow-lg">
                 Sign Out
             </button>
@@ -194,35 +230,31 @@
                             <option value="rust">Rust</option>
                             <option value="swift">Swift</option>
                             <option value="kotlin">Kotlin</option>
+                            <option value="typescript">TypeScript</option>
                         </select>
                     </div>
                 </div>
 
                 <!-- Code Editors -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                    <!-- Input -->
+                    <!-- Input with shadow placeholder -->
                     <div class="relative group">
                         <div class="relative bg-zinc-950/70 border border-zinc-800/50 rounded-2xl overflow-hidden">
                             <div class="px-4 py-3 border-b border-zinc-800/50">
                                 <span id="inputFileName" class="text-sm text-zinc-400">Input.lua</span>
                             </div>
                             <textarea id="inputCode" 
-                                      placeholder="-- Paste your code here."
-                                      class="w-full h-96 bg-transparent text-zinc-100 p-4 font-mono text-sm resize-none focus:outline-none placeholder-zinc-600"
-                                      spellcheck="false">-- Example
-local player = game.Players.LocalPlayer
-local message = "Hello World"
-print(message)
-
-function CalculateDamage(damage, multiplier)
-    return damage * (multiplier or 1)
-end</textarea>
+                                      placeholder="-- Type your code here... (examples below)"
+                                      class="w-full h-96 bg-transparent text-zinc-100 p-4 font-mono text-sm resize-none focus:outline-none placeholder-zinc-500 shadow-placeholder"
+                                      spellcheck="false"></textarea>
                         </div>
-                        <div class="absolute bottom-4 left-4 flex gap-2">
+                        <div class="absolute bottom-4 left-4 flex gap-2 flex-wrap">
                             <button onclick="setExample('lua')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">Lua</button>
                             <button onclick="setExample('javascript')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">JavaScript</button>
                             <button onclick="setExample('python')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">Python</button>
                             <button onclick="setExample('java')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">Java</button>
+                            <button onclick="setExample('csharp')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">C#</button>
+                            <button onclick="setExample('cpp')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">C++</button>
                         </div>
                     </div>
 
@@ -454,6 +486,29 @@ end</textarea>
 
     <script>
         // =============================================
+        // ===== DROPDOWN FUNCTIONS =====
+        // =============================================
+        
+        function toggleDropdown() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        function closeDropdown() {
+            document.getElementById('dropdownMenu').classList.add('hidden');
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('optionsDropdown');
+            const menu = document.getElementById('dropdownMenu');
+            
+            if (!dropdown.contains(event.target) && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // =============================================
         // ===== EASY EDIT CONFIGURATION =====
         // =============================================
         
@@ -479,7 +534,7 @@ end</textarea>
             }
         };
 
-        // ----- CODE EXAMPLES -----
+        // ----- COMPLETE CODE EXAMPLES FOR ALL LANGUAGES -----
         const EXAMPLES = {
             lua: `-- Lua Example
 local player = game.Players.LocalPlayer
@@ -488,6 +543,12 @@ print(message)
 
 function CalculateDamage(damage, multiplier)
     return damage * (multiplier or 1)
+end
+
+-- Example with table
+local weapons = {"Sword", "Bow", "Staff"}
+for i, weapon in ipairs(weapons) do
+    print("Weapon " .. i .. ": " .. weapon)
 end`,
             javascript: `// JavaScript Example
 const player = game.Players.LocalPlayer;
@@ -496,7 +557,13 @@ console.log(message);
 
 function calculateDamage(damage, multiplier = 1) {
     return damage * multiplier;
-}`,
+}
+
+// Example with array
+const weapons = ["Sword", "Bow", "Staff"];
+weapons.forEach((weapon, index) => {
+    console.log(\`Weapon \${index + 1}: \${weapon}\`);
+});`,
             python: `# Python Example
 import math
 
@@ -504,13 +571,26 @@ def calculate_damage(damage, multiplier=1):
     return damage * multiplier
 
 message = "Hello World"
-print(message)`,
+print(message)
+
+# Example with list
+weapons = ["Sword", "Bow", "Staff"]
+for i, weapon in enumerate(weapons, 1):
+    print(f"Weapon {i}: {weapon}")`,
             java: `// Java Example
 public class DamageCalculator {
     private String message = "Hello World";
     
     public int calculateDamage(int damage, int multiplier) {
         return damage * (multiplier == 0 ? 1 : multiplier);
+    }
+    
+    // Example with array
+    public void listWeapons() {
+        String[] weapons = {"Sword", "Bow", "Staff"};
+        for (int i = 0; i < weapons.length; i++) {
+            System.out.println("Weapon " + (i + 1) + ": " + weapons[i]);
+        }
     }
 }`,
             csharp: `// C# Example
@@ -522,10 +602,19 @@ public class DamageCalculator {
     public int CalculateDamage(int damage, int multiplier = 1) {
         return damage * multiplier;
     }
+    
+    // Example with array
+    public void ListWeapons() {
+        string[] weapons = {"Sword", "Bow", "Staff"};
+        for (int i = 0; i < weapons.Length; i++) {
+            Console.WriteLine($"Weapon {i + 1}: {weapons[i]}");
+        }
+    }
 }`,
             cpp: `// C++ Example
 #include <iostream>
 #include <string>
+#include <vector>
 
 class DamageCalculator {
 private:
@@ -535,7 +624,180 @@ public:
     int calculateDamage(int damage, int multiplier = 1) {
         return damage * multiplier;
     }
-};`
+    
+    // Example with vector
+    void listWeapons() {
+        std::vector<std::string> weapons = {"Sword", "Bow", "Staff"};
+        for (size_t i = 0; i < weapons.size(); i++) {
+            std::cout << "Weapon " << (i + 1) << ": " << weapons[i] << std::endl;
+        }
+    }
+};`,
+            ruby: `# Ruby Example
+class DamageCalculator
+    def initialize
+        @message = "Hello World"
+    end
+    
+    def calculate_damage(damage, multiplier = 1)
+        damage * multiplier
+    end
+    
+    # Example with array
+    def list_weapons
+        weapons = ["Sword", "Bow", "Staff"]
+        weapons.each_with_index do |weapon, index|
+            puts "Weapon #{index + 1}: #{weapon}"
+        end
+    end
+end
+
+puts "Hello World"`,
+            php: `<?php
+// PHP Example
+class DamageCalculator {
+    private $message = "Hello World";
+    
+    public function calculateDamage($damage, $multiplier = 1) {
+        return $damage * $multiplier;
+    }
+    
+    // Example with array
+    public function listWeapons() {
+        $weapons = ["Sword", "Bow", "Staff"];
+        foreach ($weapons as $index => $weapon) {
+            echo "Weapon " . ($index + 1) . ": " . $weapon . "\n";
+        }
+    }
+}
+
+echo "Hello World\n";
+?>`,
+            go: `// Go Example
+package main
+
+import "fmt"
+
+type DamageCalculator struct {
+    message string
+}
+
+func NewDamageCalculator() *DamageCalculator {
+    return &DamageCalculator{message: "Hello World"}
+}
+
+func (d *DamageCalculator) CalculateDamage(damage, multiplier int) int {
+    if multiplier == 0 {
+        multiplier = 1
+    }
+    return damage * multiplier
+}
+
+// Example with slice
+func listWeapons() {
+    weapons := []string{"Sword", "Bow", "Staff"}
+    for i, weapon := range weapons {
+        fmt.Printf("Weapon %d: %s\n", i+1, weapon)
+    }
+}
+
+func main() {
+    fmt.Println("Hello World")
+    listWeapons()
+}`,
+            rust: `// Rust Example
+struct DamageCalculator {
+    message: String,
+}
+
+impl DamageCalculator {
+    fn new() -> Self {
+        DamageCalculator {
+            message: "Hello World".to_string(),
+        }
+    }
+    
+    fn calculate_damage(&self, damage: i32, multiplier: i32) -> i32 {
+        damage * if multiplier == 0 { 1 } else { multiplier }
+    }
+}
+
+// Example with vector
+fn list_weapons() {
+    let weapons = vec!["Sword", "Bow", "Staff"];
+    for (i, weapon) in weapons.iter().enumerate() {
+        println!("Weapon {}: {}", i + 1, weapon);
+    }
+}
+
+fn main() {
+    println!("Hello World");
+    list_weapons();
+}`,
+            swift: `// Swift Example
+class DamageCalculator {
+    let message = "Hello World"
+    
+    func calculateDamage(damage: Int, multiplier: Int = 1) -> Int {
+        return damage * multiplier
+    }
+}
+
+// Example with array
+func listWeapons() {
+    let weapons = ["Sword", "Bow", "Staff"]
+    for (index, weapon) in weapons.enumerated() {
+        print("Weapon \(index + 1): \(weapon)")
+    }
+}
+
+print("Hello World")
+listWeapons()`,
+            kotlin: `// Kotlin Example
+class DamageCalculator {
+    val message = "Hello World"
+    
+    fun calculateDamage(damage: Int, multiplier: Int = 1): Int {
+        return damage * multiplier
+    }
+}
+
+// Example with array
+fun listWeapons() {
+    val weapons = arrayOf("Sword", "Bow", "Staff")
+    weapons.forEachIndexed { index, weapon ->
+        println("Weapon ${index + 1}: $weapon")
+    }
+}
+
+fun main() {
+    println("Hello World")
+    listWeapons()
+}`,
+            typescript: `// TypeScript Example
+interface DamageCalculator {
+    message: string;
+    calculateDamage(damage: number, multiplier?: number): number;
+}
+
+class Calculator implements DamageCalculator {
+    message: string = "Hello World";
+    
+    calculateDamage(damage: number, multiplier: number = 1): number {
+        return damage * multiplier;
+    }
+}
+
+// Example with array
+function listWeapons(): void {
+    const weapons: string[] = ["Sword", "Bow", "Staff"];
+    weapons.forEach((weapon, index) => {
+        console.log(`Weapon ${index + 1}: ${weapon}`);
+    });
+}
+
+console.log("Hello World");
+listWeapons();`
         };
 
         // =============================================
@@ -576,9 +838,9 @@ public:
         window.logout = function() {
             currentUser.discordUser = null;
             localStorage.removeItem(STORAGE_KEYS.DISCORD_USER);
-            document.getElementById('loginBtn').classList.remove('hidden');
             document.getElementById('logoutBtn').classList.add('hidden');
-            updateDashboard();
+            // Show login button? Actually login is in dropdown now, so just refresh
+            window.location.reload();
         };
 
         // ----- CHECK FOR DISCORD TOKEN -----
@@ -767,7 +1029,6 @@ end
             updateDashboard();
             
             if (currentUser.discordUser) {
-                document.getElementById('loginBtn').classList.add('hidden');
                 document.getElementById('logoutBtn').classList.remove('hidden');
             }
             
