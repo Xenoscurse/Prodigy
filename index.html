@@ -286,16 +286,16 @@
                     <a href="https://github.com/Xenoscurse/Prodigy" target="_blank" data-action="github">GitHub</a>
                     <div class="divider"></div>
                     <!-- Dynamic sign in/out based on login state -->
-                    <button id="dropdownSignInBtn" data-action="signin" class="signin-btn">Sign In</button>
-                    <button id="dropdownSignOutBtn" data-action="signout" class="signout-btn hidden">Sign Out</button>
-                    <button id="dropdownSwitchAccount" data-action="switch" class="switch-account-btn hidden">Switch Account</button>
+                    <button id="dropdownSignInBtn" data-action="signin">Sign In</button>
+                    <button id="dropdownSignOutBtn" data-action="signout" class="hidden">Sign Out</button>
+                    <button id="dropdownSwitchAccount" data-action="switch" class="hidden">Switch Account</button>
                 </div>
             </div>
             
-            <!-- Logout button is now in dropdown, but keep for backward compatibility -->
-            <button id="logoutBtn" class="hidden smooth-button px-5 py-2 bg-zinc-700 text-white text-sm font-medium rounded-xl hover:bg-zinc-600 transition-all duration-300 shadow-lg">
+            <!-- Remove the separate logout button since we have it in dropdown -->
+            <!-- <button id="logoutBtn" class="hidden smooth-button px-5 py-2 bg-zinc-700 text-white text-sm font-medium rounded-xl hover:bg-zinc-600 transition-all duration-300 shadow-lg">
                 Sign Out
-            </button>
+            </button> -->
         </nav>
 
         <!-- Logo -->
@@ -789,15 +789,15 @@
         const switchModal = document.getElementById('switchAccountModal');
         const savedAccountsDiv = document.getElementById('savedAccounts');
         
-        function showSwitchModal() {
-            // Populate saved accounts
+        // Make functions globally available
+        window.showSwitchModal = function() {
             updateSavedAccountsList();
             switchModal.style.display = 'flex';
-        }
+        };
         
-        function hideSwitchModal() {
+        window.hideSwitchModal = function() {
             switchModal.style.display = 'none';
-        }
+        };
         
         function updateSavedAccountsList() {
             if (savedAccounts.length === 0) {
@@ -812,7 +812,7 @@
                     : `https://cdn.discordapp.com/embed/avatars/${parseInt(account.discriminator) % 5}.png`;
                 
                 html += `
-                    <div class="switch-account-item" onclick="switchToAccount('${account.id}')">
+                    <div class="switch-account-item" onclick="window.switchToAccount('${account.id}')">
                         <img src="${avatarUrl}" alt="${account.username}">
                         <div>
                             <div class="font-medium">${account.global_name || account.username}</div>
@@ -824,18 +824,17 @@
             savedAccountsDiv.innerHTML = html;
         }
         
-        function switchToAccount(accountId) {
+        window.switchToAccount = function(accountId) {
             // Find the account
             const account = savedAccounts.find(a => a.id === accountId);
             if (!account) return;
             
             // For security, we need to re-authenticate with Discord
             // We can't just switch without re-auth, so we'll redirect to Discord
-            // The user will have to approve again, but Discord might remember them
             loginWithDiscord();
             
             hideSwitchModal();
-        }
+        };
 
         // =============================================
         // ===== SMOOTH SCROLLING =====
@@ -1156,13 +1155,6 @@ public:
                 updateDashboard();
                 window.location.reload();
             };
-
-            // Show/hide based on login state
-            if (currentUser.discordUser) {
-                document.getElementById('logoutBtn').classList.remove('hidden');
-            } else {
-                document.getElementById('logoutBtn').classList.add('hidden');
-            }
             
             // ===== OBFUSCATION =====
             const obfuscateBtn = document.getElementById('obfuscateBtn');
