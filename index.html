@@ -700,13 +700,13 @@ end</textarea>
 
         // ✅ UPDATED: Real Discord OAuth redirect
         function loginWithDiscord() {
-            // Client ID 
-            const clientId = '1464021428725747733'; 
-            const redirectUri = encodeURIComponent('https://xenoscurse.github.io/Culled/callback.html');
-            const scope = encodeURIComponent('identify email');
-            
-            window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
-        }
+    const clientId = '1464021428725747733'; // 
+    const redirectUri = encodeURIComponent('https://xenoscurse.github.io/Culled/callback.html');
+    const scope = encodeURIComponent('identify email');
+    
+    // Use response_type=token instead of code
+    window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}`;
+}
 
         function logout() {
             currentUser.discordUser = null;
