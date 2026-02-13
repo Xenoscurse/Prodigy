@@ -11,11 +11,11 @@
     <meta name="author" content="Xenoscurse">
     
     <!-- Favicon / Logo -->
-    <link rel="icon" type="image/gif" href="https://cdn.discordapp.com/attachments/1470139867169165506/1471637177866649748/culled1.gif">
-    <link rel="apple-touch-icon" href="https://cdn.discordapp.com/attachments/1470139867169165506/1471637177866649748/culled1.gif">
+    <link rel="icon" type="image/gif" href="https://cdn.discordapp.com/attachments/1470139867169165506/1471681073162358887/culledfinal.gif?ex=698fd14e&is=698e7fce&hm=5cbd8e970c873f2a716af166e30c0ef900d26cf0150189f9217c89483fc5ac6a&">
+    <link rel="apple-touch-icon" href="https://cdn.discordapp.com/attachments/1470139867169165506/1471681073162358887/culledfinal.gif?ex=698fd14e&is=698e7fce&hm=5cbd8e970c873f2a716af166e30c0ef900d26cf0150189f9217c89483fc5ac6a&">
     
     <!-- Background Image -->
-    <meta name="background-image" content="https://i.pinimg.com/1200x/d4/aa/20/d4aa2073fe6345ef4bc47350e9e94358.jpg">
+    <meta name="background-image" content="https://cdn.discordapp.com/attachments/1470139867169165506/1471681985339457698/sword.jpg?ex=698fd227&is=698e80a7&hm=48c2356b88636349cc7a39eebc6f2e6df5a155bbc0942ae1cb519699005212bb&">
     
     <!-- SellAuth Configuration -->
     <meta name="sellauth-pro-id" content="YOUR_SELLAUTH_PRO_ID">
@@ -59,12 +59,45 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Custom dropdown arrow fix */
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem;
+            padding-right: 2.5rem !important;
+        }
+
+        select:hover {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(24, 24, 27, 0.5);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(168, 85, 247, 0.5);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(168, 85, 247, 0.8);
+        }
     </style>
 </head>
 <body class="min-h-screen text-white relative antialiased">
     <!-- Background Image - Optimized with will-change -->
     <div class="fixed inset-0 z-0 will-change-transform">
-        <img src="https://i.pinimg.com/1200x/d4/aa/20/d4aa2073fe6345ef4bc47350e9e94358.jpg" 
+        <img src="https://cdn.discordapp.com/attachments/1470139867169165506/1471681985339457698/sword.jpg?ex=698fd227&is=698e80a7&hm=48c2356b88636349cc7a39eebc6f2e6df5a155bbc0942ae1cb519699005212bb&" 
              alt="Background" 
              class="w-full h-full object-cover"
              loading="eager">
@@ -103,7 +136,7 @@
         <!-- Logo -->
         <header class="fixed top-6 left-6 z-50">
             <div class="flex items-center gap-3 px-4 py-2 bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-xl shadow-lg">
-                <img src="https://cdn.discordapp.com/attachments/1470139867169165506/1471637177866649748/culled1.gif" 
+                <img src="https://cdn.discordapp.com/attachments/1470139867169165506/1471681073162358887/culledfinal.gif?ex=698fd14e&is=698e7fce&hm=5cbd8e970c873f2a716af166e30c0ef900d26cf0150189f9217c89483fc5ac6a&" 
                      alt="Culled Logo" 
                      class="w-8 h-8 object-contain rounded-lg"
                      loading="eager">
@@ -115,7 +148,7 @@
         <section class="pt-32 pb-12 px-6">
             <div class="max-w-4xl mx-auto text-center">
                 <div class="flex justify-center mb-6 animate-float">
-                    <img src="https://cdn.discordapp.com/attachments/1470139867169165506/1471637177866649748/culled1.gif" 
+                    <img src="https://cdn.discordapp.com/attachments/1470139867169165506/1471681073162358887/culledfinal.gif?ex=698fd14e&is=698e7fce&hm=5cbd8e970c873f2a716af166e30c0ef900d26cf0150189f9217c89483fc5ac6a&" 
                          alt="Culled Logo" 
                          class="w-24 h-24 object-contain rounded-2xl border-2 border-purple-500/50"
                          loading="eager">
@@ -161,20 +194,14 @@
                         <span id="currentTierBadge" class="px-3 py-1.5 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-xs text-zinc-300">
                             Free Tier · 10/10 Remaining
                         </span>
-                        <select id="languageSelect" class="px-3 py-1.5 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-sm text-zinc-300 focus:outline-none focus:border-purple-500 transition-colors">
+                        <select id="languageSelect" class="px-3 py-1.5 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-sm text-zinc-300 focus:outline-none focus:border-purple-500 transition-colors cursor-pointer">
                             <option value="lua">Lua</option>
                             <option value="javascript">JavaScript</option>
                             <option value="python">Python</option>
-                            <option value="java">Java</option>
                             <option value="cpp">C++</option>
                             <option value="csharp">C#</option>
                             <option value="ruby">Ruby</option>
                             <option value="php">PHP</option>
-                            <option value="go">Go</option>
-                            <option value="rust">Rust</option>
-                            <option value="swift">Swift</option>
-                            <option value="kotlin">Kotlin</option>
-                            <option value="typescript">TypeScript</option>
                         </select>
                     </div>
                 </div>
@@ -204,7 +231,7 @@ end</textarea>
                             <button onclick="setExample('lua')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">Lua</button>
                             <button onclick="setExample('javascript')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">JavaScript</button>
                             <button onclick="setExample('python')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">Python</button>
-                            <button onclick="setExample('java')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">Java</button>
+                            <button onclick="setExample('cpp')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">C++</button>
                         </div>
                     </div>
 
@@ -442,7 +469,7 @@ end</textarea>
                             <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span class="text-zinc-300"><span class="font-bold text-white">8+ Languages</span> (Java, C#, C++, Ruby, PHP)</span>
+                            <span class="text-zinc-300"><span class="font-bold text-white">8+ Languages</span> (Java, C#, C++, Ruby, PHP, Go, Rust, Swift, Kotlin, TypeScript)</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -496,7 +523,7 @@ end</textarea>
                             <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span class="text-zinc-300"><span class="font-bold text-white">15+ Languages</span> (Go, Rust, Swift, Kotlin, TypeScript)</span>
+                            <span class="text-zinc-300"><span class="font-bold text-white">15+ Languages</span> (Java, C#, C++, Ruby, PHP, Go, Rust, Swift, Kotlin, TypeScript)</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -682,7 +709,7 @@ end</textarea>
                 unlimited: true,
                 dailyQuota: Infinity,
                 processingSpeed: 'fast',
-                languages: ['lua', 'javascript', 'python', 'java', 'c#', 'c++', 'ruby', 'php'],
+                languages: ['lua', 'javascript', 'python', 'java', 'c#', 'c++', 'ruby', 'php', 'go', 'rust', 'swift', 'kotlin', 'typescript'],
                 features: {
                     controlFlow: true,
                     antiTamper: false,
@@ -740,15 +767,6 @@ def calculate_damage(damage, multiplier=1):
 message = "Hello World"
 print(message)`,
 
-            java: `// Java Example
-public class DamageCalculator {
-    private String message = "Hello World";
-    
-    public int calculateDamage(int damage, int multiplier) {
-        return damage * (multiplier == 0 ? 1 : multiplier);
-    }
-}`,
-
             cpp: `// C++ Example
 #include <iostream>
 #include <string>
@@ -797,7 +815,7 @@ class DamageCalculator {
 ?>`
         };
 
-        // Set example based on language
+        // Set example based on language - NOW ALSO TRIGGERED BY DROPDOWN
         window.setExample = function(lang) {
             const input = document.getElementById('inputCode');
             if (EXAMPLES[lang]) {
@@ -805,10 +823,17 @@ class DamageCalculator {
                 // Update language selector
                 const select = document.getElementById('languageSelect');
                 select.value = lang;
-                // Trigger change event
-                select.dispatchEvent(new Event('change'));
+                // Update file names
+                updateFileNames(lang);
             }
         };
+
+        // Update file names based on language
+        function updateFileNames(lang) {
+            const ext = lang;
+            document.getElementById('inputFileName').textContent = `Input.${ext}`;
+            document.getElementById('outputFileName').textContent = `Output.${ext}`;
+        }
 
         // =============================================
         // USER STATE MANAGEMENT
@@ -1091,11 +1116,21 @@ class DamageCalculator {
                 tierConfig.languages.forEach(lang => {
                     const option = document.createElement('option');
                     option.value = lang.toLowerCase();
-                    option.textContent = lang.charAt(0).toUpperCase() + lang.slice(1).replace('c#', 'C#').replace('c++', 'C++');
+                    let displayName = lang.charAt(0).toUpperCase() + lang.slice(1);
+                    displayName = displayName.replace('c#', 'C#').replace('c++', 'C++');
+                    option.textContent = displayName;
                     langSelect.appendChild(option);
                 });
+                // Try to keep the same language selected if available, otherwise set to first
                 if (tierConfig.languages.map(l => l.toLowerCase()).includes(currentValue)) {
                     langSelect.value = currentValue;
+                    // Load the example for this language
+                    if (EXAMPLES[currentValue]) {
+                        setExample(currentValue);
+                    }
+                } else {
+                    langSelect.value = tierConfig.languages[0];
+                    setExample(tierConfig.languages[0]);
                 }
             }
             
@@ -1266,13 +1301,15 @@ end
             });
             
             const langSelect = document.getElementById('languageSelect');
-            const inputFileName = document.getElementById('inputFileName');
-            const outputFileName = document.getElementById('outputFileName');
             
+            // Language selector change event - NOW AUTOMATICALLY LOADS EXAMPLE
             langSelect.addEventListener('change', (e) => {
-                const ext = e.target.value;
-                inputFileName.textContent = `Input.${ext}`;
-                outputFileName.textContent = `Output.${ext}`;
+                const lang = e.target.value;
+                updateFileNames(lang);
+                // Load the example for the selected language
+                if (EXAMPLES[lang]) {
+                    setExample(lang);
+                }
             });
         });
     </script>
