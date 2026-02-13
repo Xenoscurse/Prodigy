@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ===== EASY EDIT - SITE INFORMATION ===== -->
-    <title>Culled - Military-Grade Code Obfuscation</title>
-    <meta name="title" content="Culled - Military-Grade Code Obfuscation">
-    <meta name="description" content="Enterprise-grade code obfuscation. Protect your scripts with military-grade encryption and anti-tamper technology.">
+    <title>Prodigy - Advanced AI Code Obfuscation</title>
+    <meta name="title" content="Prodigy - Advanced AI Code Obfuscation">
+    <meta name="description" content="Next-generation code obfuscation powered by AI. Protect your scripts with advanced machine learning technology.">
     <meta name="author" content="Xenoscurse">
     
     <!-- ===== EASY EDIT - URLs & ASSETS ===== -->
@@ -25,11 +25,11 @@
     <style>
         /* ===== EASY EDIT - THEME COLORS ===== */
         :root {
-            --primary: #a855f7;
-            --primary-dark: #9333ea;
-            --primary-light: #c084fc;
-            --secondary: #5865F2;
-            --secondary-dark: #4752C4;
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --primary-light: #60a5fa;
+            --secondary: #8b5cf6;
+            --secondary-dark: #7c3aed;
             --success: #22c55e;
             --warning: #f59e0b;
             --danger: #ef4444;
@@ -42,15 +42,25 @@
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         .animate-spin { animation: spin 1s linear infinite; }
         .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-gradient { 
+            background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #3b82f6, #8b5cf6);
+            background-size: 300% 300%;
+            animation: gradient 6s ease infinite;
+        }
         
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: rgba(24, 24, 27, 0.3); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb { background: rgba(168, 85, 247, 0.4); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 247, 0.8); }
+        ::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.4); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.8); }
         
         /* Performance optimizations */
         * { 
@@ -64,7 +74,7 @@
         }
         
         @media (prefers-reduced-motion) {
-            .animate-float, .animate-pulse, .animate-spin { animation: none; }
+            .animate-float, .animate-pulse, .animate-spin, .animate-gradient { animation: none; }
         }
 
         /* Custom dropdown arrow */
@@ -83,17 +93,14 @@
             background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
         }
 
-        /* License key input styling */
-        .license-input {
-            background: rgba(24, 24, 27, 0.8);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            transition: all 0.2s;
+        /* AI processing animation */
+        .ai-pulse {
+            animation: ai-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
         
-        .license-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
-            outline: none;
+        @keyframes ai-pulse {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.5)); }
+            50% { opacity: 0.8; filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.8)); }
         }
     </style>
 </head>
@@ -109,33 +116,22 @@
 
     <!-- Ambient effects -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[100px]"></div>
+        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[100px]"></div>
         <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[100px]"></div>
     </div>
 
     <div class="relative z-10">
-        <!-- ===== NAVIGATION - OPTIONS DROPDOWN ===== -->
+        <!-- ===== NAVIGATION ===== -->
         <nav class="fixed top-6 right-6 z-50 flex items-center gap-3">
-            <!-- Options Dropdown -->
-            <div class="relative group">
-                <button class="px-4 py-2 bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-all duration-200 shadow-lg flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                    Options
-                </button>
-                <div class="absolute right-0 mt-2 w-48 bg-zinc-900/95 backdrop-blur-xl border border-zinc-800/50 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                    <div class="py-2">
-                        <a href="#Features" class="block px-4 py-2 text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-colors">Features</a>
-                        <a href="#Pricing" class="block px-4 py-2 text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-colors">Pricing</a>
-                        <a href="#Dashboard" class="block px-4 py-2 text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-colors">Dashboard</a>
-                        <a href="#KeyActivation" class="block px-4 py-2 text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-colors">Activate Key</a>
-                        <div class="border-t border-zinc-800/50 my-2"></div>
-                        <a href="https://github.com/Xenoscurse/Culled" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-colors">GitHub</a>
-                    </div>
-                </div>
-            </div>
-            
+            <a href="#Features" class="px-4 py-2 bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-all duration-200 shadow-lg">
+                Features
+            </a>
+            <a href="#Dashboard" class="px-4 py-2 bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-all duration-200 shadow-lg">
+                Dashboard
+            </a>
+            <a href="https://github.com/Xenoscurse/Prodigy" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/80 transition-all duration-200 shadow-lg">
+                GitHub
+            </a>
             <button id="loginBtn" onclick="showLoginModal()" class="px-5 py-2 bg-white text-black text-sm font-medium rounded-xl hover:bg-zinc-100 transition-all duration-200 shadow-lg">
                 Sign In
             </button>
@@ -148,61 +144,29 @@
         <header class="fixed top-6 left-6 z-50">
             <div class="flex items-center gap-3 px-4 py-2 bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-xl shadow-lg">
                 <img src="https://raw.githubusercontent.com/Xenoscurse/Culled/main/culledlogo.gif" 
-                     alt="Culled Logo" 
+                     alt="Prodigy Logo" 
                      class="w-8 h-8 object-contain rounded-lg"
                      loading="eager">
-                <span class="text-xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">Culled</span>
+                <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Prodigy</span>
             </div>
         </header>
-
-        <!-- ===== KEY ACTIVATION MODAL ===== -->
-        <div id="keyActivationModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm">
-            <div class="bg-zinc-900 border border-purple-500/30 rounded-3xl p-8 max-w-md w-full mx-4">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-2xl font-bold bg-gradient-to-b from-white to-purple-200 bg-clip-text text-transparent">Activate License Key</h3>
-                    <button onclick="hideKeyModal()" class="text-zinc-500 hover:text-white transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-                
-                <p class="text-zinc-400 mb-6 text-sm">Enter your license key to activate Pro or Premium features.</p>
-                
-                <input type="text" id="licenseKeyInput" placeholder="XXXXXX-XXXXXX-XXXXXX-XXXXXX" 
-                       class="license-input w-full px-4 py-3 bg-zinc-800/50 border border-zinc-700/50 rounded-xl text-white placeholder-zinc-500 mb-4">
-                
-                <div class="flex gap-3">
-                    <button onclick="activateLicenseKey()" class="flex-1 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl transition-all duration-200 font-medium">
-                        Activate Key
-                    </button>
-                    <button onclick="hideKeyModal()" class="flex-1 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl transition-all duration-200">
-                        Cancel
-                    </button>
-                </div>
-                
-                <p class="text-xs text-zinc-600 mt-4 text-center">
-                    Keys are provided after purchase via email
-                </p>
-            </div>
-        </div>
 
         <!-- Hero Section -->
         <section class="pt-32 pb-12 px-6">
             <div class="max-w-4xl mx-auto text-center">
                 <div class="flex justify-center mb-6 animate-float">
                     <img src="https://raw.githubusercontent.com/Xenoscurse/Culled/main/culledlogo.gif" 
-                         alt="Culled Logo" 
-                         class="w-24 h-24 object-contain rounded-2xl border-2 border-purple-500/50"
+                         alt="Prodigy Logo" 
+                         class="w-24 h-24 object-contain rounded-2xl border-2 border-blue-500/50"
                          loading="eager">
                 </div>
                 
-                <h1 class="text-7xl font-bold mb-6 bg-gradient-to-b from-white via-purple-200 to-zinc-400 bg-clip-text text-transparent">
-                    Culled
+                <h1 class="text-7xl font-bold mb-6 bg-gradient-to-b from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+                    Prodigy
                 </h1>
                 
                 <p class="text-xl text-zinc-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-                    Military-Grade Code Obfuscation. Protect Your Scripts From Prying Eyes.
+                    Next-Generation AI Code Obfuscation. Protect Your Scripts With Advanced Machine Learning.
                 </p>
 
                 <div class="flex items-center justify-center gap-4">
@@ -212,17 +176,17 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </button>
-                    <a href="#Pricing" class="px-6 py-3 bg-zinc-900/50 backdrop-blur-sm border border-zinc-800/50 font-medium rounded-xl hover:bg-zinc-800/50 transition-all duration-200">
-                        View Pricing
+                    <a href="#Dashboard" class="px-6 py-3 bg-zinc-900/50 backdrop-blur-sm border border-zinc-800/50 font-medium rounded-xl hover:bg-zinc-800/50 transition-all duration-200">
+                        View Dashboard
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- ===== OBFUSCATOR ENGINE ===== -->
+        <!-- ===== OBFUSCATOR ENGINE WITH AI ===== -->
         <section id="editor" class="max-w-7xl mx-auto px-6 py-12">
             <div class="bg-zinc-900/50 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-8 shadow-2xl">
-                <!-- Editor Header -->
+                <!-- Editor Header with AI Badge -->
                 <div class="flex items-center justify-between mb-6">
                     <div class="flex items-center gap-3">
                         <div class="flex gap-2">
@@ -230,16 +194,27 @@
                             <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                             <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
                         </div>
-                        <span class="text-sm text-zinc-500 ml-4">Obfuscator</span>
+                        <span class="text-sm text-zinc-500 ml-4">AI Obfuscator</span>
                     </div>
                     <div class="flex items-center gap-3">
-                        <span id="currentTierBadge" class="px-3 py-1.5 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-xs text-zinc-300">
-                            Free Tier · 10/10 Remaining
+                        <!-- AI Status Badge -->
+                        <span class="px-3 py-1.5 bg-blue-500/20 border border-blue-500/50 rounded-lg text-xs text-blue-300 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full ai-pulse"></span>
+                            AI-POWERED · ALL FEATURES FREE
                         </span>
-                        <select id="languageSelect" class="px-3 py-1.5 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-sm text-zinc-300 focus:outline-none focus:border-purple-500 transition-colors cursor-pointer">
+                        <select id="languageSelect" class="px-3 py-1.5 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-sm text-zinc-300 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer">
                             <option value="lua">Lua</option>
                             <option value="javascript">JavaScript</option>
                             <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="csharp">C#</option>
+                            <option value="cpp">C++</option>
+                            <option value="ruby">Ruby</option>
+                            <option value="php">PHP</option>
+                            <option value="go">Go</option>
+                            <option value="rust">Rust</option>
+                            <option value="swift">Swift</option>
+                            <option value="kotlin">Kotlin</option>
                         </select>
                     </div>
                 </div>
@@ -268,10 +243,11 @@ end</textarea>
                             <button onclick="setExample('lua')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">Lua</button>
                             <button onclick="setExample('javascript')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">JavaScript</button>
                             <button onclick="setExample('python')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">Python</button>
+                            <button onclick="setExample('java')" class="px-3 py-1.5 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg text-xs text-zinc-300 transition-colors">Java</button>
                         </div>
                     </div>
 
-                    <!-- Output - FIXED: Clean message without extra spaces -->
+                    <!-- Output -->
                     <div class="relative group">
                         <div class="relative bg-zinc-950/70 border border-zinc-800/50 rounded-2xl overflow-hidden">
                             <div class="px-4 py-3 border-b border-zinc-800/50 flex items-center justify-between">
@@ -285,52 +261,105 @@ end</textarea>
                             </div>
                             <div id="outputCode" 
                                  class="w-full h-96 bg-transparent text-green-400 p-4 font-mono text-sm overflow-auto whitespace-pre-wrap break-words leading-relaxed">
--- Your obfuscated code will appear here
--- Click "Obfuscate" to protect your code
--- Upgrade to Pro or Premium for advanced features
+-- Your AI-obfuscated code will appear here
+-- Click "AI Obfuscate" to process with machine learning
+-- All features are completely FREE
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Action Bar -->
+                <!-- Action Bar with AI Controls -->
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div id="advancedParams" class="flex items-center gap-3 text-sm text-zinc-500 opacity-50 pointer-events-none">
-                        <span class="px-3 py-1.5 bg-zinc-800/50 rounded-lg flex items-center gap-1">
-                            <span class="w-2 h-2 bg-gray-500 rounded-full"></span>
-                            Control Flow
+                    <!-- AI Parameters - ALL ENABLED FOR FREE -->
+                    <div id="advancedParams" class="flex items-center gap-3 text-sm text-zinc-300">
+                        <span class="px-3 py-1.5 bg-blue-500/20 border border-blue-500/30 rounded-lg flex items-center gap-1">
+                            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                            AI Control Flow
                         </span>
-                        <span class="px-3 py-1.5 bg-zinc-800/50 rounded-lg flex items-center gap-1">
-                            <span class="w-2 h-2 bg-gray-500 rounded-full"></span>
-                            Anti-Tamper
+                        <span class="px-3 py-1.5 bg-purple-500/20 border border-purple-500/30 rounded-lg flex items-center gap-1">
+                            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                            AI Anti-Tamper
                         </span>
-                        <span class="px-3 py-1.5 bg-zinc-800/50 rounded-lg flex items-center gap-1">
-                            <span class="w-2 h-2 bg-gray-500 rounded-full"></span>
-                            Junk Code
+                        <span class="px-3 py-1.5 bg-indigo-500/20 border border-indigo-500/30 rounded-lg flex items-center gap-1">
+                            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                            AI Junk Code
                         </span>
                     </div>
                     
                     <div class="flex items-center gap-3">
-                        <span id="usageCounter" class="px-4 py-2 bg-zinc-800/50 rounded-lg text-sm text-zinc-300">
-                            10/10 Uses Left
+                        <span id="usageCounter" class="px-4 py-2 bg-blue-500/20 border border-blue-500/50 rounded-lg text-sm text-blue-300">
+                            ∞ Unlimited Free Uses
                         </span>
-                        <button id="obfuscateBtn" class="px-6 py-2.5 bg-white text-black font-medium rounded-xl hover:bg-zinc-100 transition-all duration-200 flex items-center gap-2 text-sm shadow-lg">
-                            <svg id="shieldIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        <button id="obfuscateBtn" class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 flex items-center gap-2 text-sm shadow-lg">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
-                            <span id="obfuscateBtnText">Obfuscate</span>
+                            <span id="obfuscateBtnText">AI Obfuscate</span>
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== DASHBOARD WITH RESET TIMER ===== -->
+        <!-- ===== AI FEATURES SECTION ===== -->
+        <section id="Features" class="max-w-7xl mx-auto px-6 py-20">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 bg-gradient-to-b from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+                    AI-Powered Features
+                </h2>
+                <p class="text-zinc-300 text-lg">Advanced Machine Learning · 100% Free · No Limits</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AI Control Flow</h3>
+                    <p class="text-zinc-400 text-sm">Machine learning optimizes code paths for maximum obscurity</p>
+                </div>
+                
+                <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-2xl p-6 text-center hover:border-purple-500/50 transition-all duration-300">
+                    <div class="w-16 h-16 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AI Anti-Tamper</h3>
+                    <p class="text-zinc-400 text-sm">Runtime integrity checks that adapt to threats</p>
+                </div>
+                
+                <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-2xl p-6 text-center hover:border-indigo-500/50 transition-all duration-300">
+                    <div class="w-16 h-16 bg-indigo-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AI Junk Code</h3>
+                    <p class="text-zinc-400 text-sm">Intelligent garbage insertion that looks real</p>
+                </div>
+                
+                <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-2xl p-6 text-center hover:border-pink-500/50 transition-all duration-300">
+                    <div class="w-16 h-16 bg-pink-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Multi-Language AI</h3>
+                    <p class="text-zinc-400 text-sm">15+ languages with language-specific optimizations</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DASHBOARD ===== -->
         <section id="Dashboard" class="max-w-7xl mx-auto px-6 py-20">
             <div class="bg-zinc-900/50 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-8 shadow-2xl">
                 <div class="flex items-center justify-between mb-8">
-                    <h2 class="text-3xl font-bold bg-gradient-to-b from-white to-purple-200 bg-clip-text text-transparent">
-                        Subscription Dashboard
+                    <h2 class="text-3xl font-bold bg-gradient-to-b from-white to-blue-200 bg-clip-text text-transparent">
+                        User Dashboard
                     </h2>
                     <span id="dashboardAuth" class="px-4 py-2 bg-zinc-800/50 rounded-lg text-sm text-zinc-400">
                         Not Signed In
@@ -342,9 +371,9 @@ end</textarea>
                     <svg class="w-20 h-20 text-zinc-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                     </svg>
-                    <h3 class="text-xl text-white mb-2">Sign In to View Your Subscription</h3>
-                    <p class="text-zinc-400 mb-6">Manage Your Plan, View Usage, or Cancel Anytime</p>
-                    <button onclick="showLoginModal()" class="px-6 py-3 bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-xl transition-all duration-200">
+                    <h3 class="text-xl text-white mb-2">Sign In to Track Your Usage</h3>
+                    <p class="text-zinc-400 mb-6">View your obfuscation history and manage preferences</p>
+                    <button onclick="showLoginModal()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200">
                         Sign In With Discord
                     </button>
                 </div>
@@ -354,282 +383,45 @@ end</textarea>
                     <!-- User Info -->
                     <div class="bg-zinc-800/30 rounded-2xl p-6 mb-6">
                         <div class="flex items-center gap-4">
-                            <img id="userAvatar" src="" alt="Avatar" class="w-16 h-16 rounded-full border-2 border-purple-500/50">
+                            <img id="userAvatar" src="" alt="Avatar" class="w-16 h-16 rounded-full border-2 border-blue-500/50">
                             <div>
                                 <h3 id="userName" class="text-xl font-bold text-white">Username</h3>
-                                <p id="userEmail" class="text-zinc-400">Discord@Example.com</p>
-                                <p id="discordTag" class="text-xs text-[#5865F2] mt-1">Discord</p>
+                                <p id="userEmail" class="text-zinc-400">user@example.com</p>
+                                <p id="discordTag" class="text-xs text-blue-400 mt-1">Discord</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Subscription Details -->
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div class="bg-zinc-800/30 rounded-2xl p-6">
-                            <h4 class="text-sm font-medium text-zinc-500 mb-2">Current Plan</h4>
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span id="currentPlanBadge" class="text-2xl font-bold text-white">Free</span>
-                                    <p id="planPrice" class="text-zinc-400">$0/Forever</p>
-                                </div>
-                                <span id="planStatus" class="px-3 py-1 bg-green-500/20 border border-green-500/50 rounded-full text-xs text-green-300">Active</span>
-                            </div>
+                    <!-- Stats Cards -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-gradient-to-br from-blue-900/20 to-zinc-800/30 rounded-2xl p-6">
+                            <div class="text-3xl font-bold text-white mb-1">∞</div>
+                            <div class="text-sm text-zinc-400">Free Obfuscations</div>
+                            <div class="text-xs text-blue-400 mt-2">No limits, ever</div>
                         </div>
-                        <div class="bg-zinc-800/30 rounded-2xl p-6">
-                            <h4 class="text-sm font-medium text-zinc-500 mb-2">Subscription Details</h4>
-                            <p id="subscriptionStart" class="text-white">Started: N/A</p>
-                            <p id="subscriptionEnd" class="text-white">Renews: N/A</p>
+                        <div class="bg-gradient-to-br from-purple-900/20 to-zinc-800/30 rounded-2xl p-6">
+                            <div class="text-3xl font-bold text-white mb-1">15+</div>
+                            <div class="text-sm text-zinc-400">Languages Supported</div>
+                            <div class="text-xs text-purple-400 mt-2">All features unlocked</div>
                         </div>
-                    </div>
-
-                    <!-- Usage Stats with Reset Timer -->
-                    <div class="bg-zinc-800/30 rounded-2xl p-6 mb-8">
-                        <h4 class="text-sm font-medium text-zinc-500 mb-4">Today's Usage</h4>
-                        <div class="flex items-center justify-between mb-4">
-                            <div>
-                                <span id="usageStats" class="text-2xl font-bold text-white">0/10</span>
-                                <span class="text-zinc-400 ml-2">Obfuscations Used</span>
-                            </div>
-                            <div class="w-64 h-2 bg-zinc-700 rounded-full overflow-hidden">
-                                <div id="usageBar" class="h-full bg-purple-600 rounded-full" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <!-- Reset Timer for Free Tier -->
-                        <div id="resetTimerContainer" class="mt-4 p-4 bg-zinc-900/50 rounded-xl border border-zinc-700/50">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-sm text-zinc-400">Daily Limit Resets In:</span>
-                                </div>
-                                <span id="resetTimer" class="text-lg font-bold text-purple-400">12:34:56</span>
-                            </div>
-                            <p class="text-xs text-zinc-500 mt-2">Free tier: 10 obfuscations per day. Resets at midnight UTC.</p>
+                        <div class="bg-gradient-to-br from-indigo-900/20 to-zinc-800/30 rounded-2xl p-6">
+                            <div class="text-3xl font-bold text-white mb-1">⚡</div>
+                            <div class="text-sm text-zinc-400">Ultra Speed</div>
+                            <div class="text-xs text-indigo-400 mt-2">AI-optimized processing</div>
                         </div>
                     </div>
 
-                    <!-- License Key Display -->
-                    <div id="licenseInfo" class="bg-zinc-800/30 rounded-2xl p-6 mb-8 hidden">
-                        <h4 class="text-sm font-medium text-zinc-500 mb-2">Active License Key</h4>
+                    <!-- Usage Stats (Optional, just for fun) -->
+                    <div class="bg-zinc-800/30 rounded-2xl p-6">
+                        <h4 class="text-sm font-medium text-zinc-500 mb-4">Your Activity</h4>
                         <div class="flex items-center justify-between">
-                            <code id="activeLicenseKey" class="px-3 py-2 bg-zinc-900/80 rounded-lg text-sm text-purple-400 font-mono"></code>
-                            <span class="px-3 py-1 bg-purple-500/20 border border-purple-500/50 rounded-full text-xs text-purple-300">Active</span>
+                            <div>
+                                <span id="usageStats" class="text-2xl font-bold text-white">0</span>
+                                <span class="text-zinc-400 ml-2">Total Obfuscations</span>
+                            </div>
+                            <div class="text-sm text-blue-400">✨ All premium features free</div>
                         </div>
                     </div>
-
-                    <!-- Danger Zone -->
-                    <div id="cancelSection" class="border border-red-500/30 rounded-2xl p-6 bg-red-500/5 hidden">
-                        <h4 class="text-lg font-bold text-red-400 mb-2">Cancel Subscription</h4>
-                        <p class="text-zinc-400 text-sm mb-4">
-                            Once you cancel, you'll lose access to premium features at the end of your billing period. 
-                            Your usage data will be downgraded to the free tier (10 obfuscations/day).
-                        </p>
-                        <button onclick="confirmCancellation()" class="px-6 py-2.5 bg-red-600/20 hover:bg-red-600/30 border border-red-500/50 text-red-400 rounded-xl transition-all duration-200">
-                            Cancel Subscription
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== PRICING SECTION ===== -->
-        <section id="Pricing" class="max-w-7xl mx-auto px-6 py-20">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 bg-gradient-to-b from-white to-purple-200 bg-clip-text text-transparent">
-                    Choose Your Tier
-                </h2>
-                <p class="text-zinc-300 text-lg">Free · Pro · Premium — Upgrade Anytime</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Free Tier -->
-                <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-3xl p-8 hover:border-purple-500/50 transition-all duration-300">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold text-white">Free</h3>
-                            <p class="text-xs text-zinc-500 mt-1">10 Uses / Day</p>
-                        </div>
-                        <span class="px-3 py-1 bg-zinc-800 rounded-full text-xs text-zinc-400">Tier 1</span>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-white">$0</span>
-                        <span class="text-zinc-500">/Forever</span>
-                    </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300"><span class="font-bold text-white">10</span> Obfuscations / Day</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300">Lua · JavaScript · Python</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300">Variable Renaming</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300">String Encryption</span>
-                        </li>
-                        <li class="flex items-start gap-3 text-zinc-500">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            <span class="text-zinc-500">No Control Flow</span>
-                        </li>
-                    </ul>
-                    
-                    <button onclick="setTier('free')" class="w-full py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl transition-all duration-200 font-medium">
-                        Current Plan
-                    </button>
-                </div>
-
-                <!-- Pro Tier -->
-                <div class="bg-gradient-to-b from-purple-900/30 to-zinc-900/50 backdrop-blur-md border-2 border-purple-500/50 rounded-3xl p-8 transform scale-105 shadow-2xl relative">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span class="px-4 py-1 bg-purple-600 text-white text-xs font-bold rounded-full">BEST VALUE</span>
-                    </div>
-                    
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold text-white">Pro</h3>
-                            <p class="text-xs text-purple-300 mt-1">Unlimited · Faster</p>
-                        </div>
-                        <span class="px-3 py-1 bg-purple-900/50 border border-purple-500/50 rounded-full text-xs text-purple-300">Tier 2</span>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-white">$5.99</span>
-                        <span class="text-zinc-500">/Month</span>
-                    </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300"><span class="font-bold text-white">Unlimited</span> Obfuscations</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300"><span class="font-bold text-white">15+ Languages</span> (All Languages)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300"><span class="font-bold text-white">Fast</span> Processing (400ms)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300">Control Flow Flattening</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300">Junk Code Injection</span>
-                        </li>
-                    </ul>
-                    
-                    <button onclick="window.location.href='pay.html?tier=pro'" class="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl transition-all duration-200 font-medium shadow-lg shadow-purple-600/30">
-                        Purchase Pro · $5.99/mo
-                    </button>
-                    <p class="text-xs text-center text-zinc-500 mt-3">via Venmo/CashApp · Keys Emailed</p>
-                </div>
-
-                <!-- Premium Tier -->
-                <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-3xl p-8 hover:border-blue-500/50 transition-all duration-300">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold text-white">Premium</h3>
-                            <p class="text-xs text-blue-400 mt-1">Ultra · Everything</p>
-                        </div>
-                        <span class="px-3 py-1 bg-blue-900/30 border border-blue-500/50 rounded-full text-xs text-blue-300">Tier 3</span>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-white">$7.99</span>
-                        <span class="text-zinc-500">/Month</span>
-                    </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300"><span class="font-bold text-white">Unlimited</span> Obfuscations</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300"><span class="font-bold text-white">15+ Languages</span> (All Languages)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300"><span class="font-bold text-white">Ultra</span> Processing (200ms)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300">Control Flow Flattening</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300"><span class="font-bold text-white">Anti-Tamper</span> Protection</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-zinc-300">Junk Code Injection</span>
-                        </li>
-                    </ul>
-                    
-                    <button onclick="window.location.href='pay.html?tier=premium'" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium">
-                        Purchase Premium · $7.99/mo
-                    </button>
-                    <p class="text-xs text-center text-zinc-500 mt-3">via Venmo/CashApp · Keys Emailed</p>
-                </div>
-            </div>
-            
-            <!-- Payment Trust Badge -->
-            <div class="flex justify-center mt-12">
-                <div class="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800/50 rounded-full px-6 py-3 inline-flex items-center gap-3">
-                    <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                    </svg>
-                    <span class="text-sm text-zinc-300">Pay with Venmo · CashApp · Crypto · Keys Emailed</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section id="Features" class="max-w-7xl mx-auto px-6 py-20">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 bg-gradient-to-b from-white to-purple-200 bg-clip-text text-transparent">
-                    Why Choose Culled?
-                </h2>
-                <p class="text-zinc-300 text-lg">Enterprise-Grade Protection for Your Scripts</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-2xl p-6 text-center hover:border-purple-500/50 transition-all duration-300">
-                    <div class="w-16 h-16 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Military-Grade</h3>
-                    <p class="text-zinc-400 text-sm">Control Flow, Anti-Tamper, Junk Code</p>
-                </div>
-                <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300">
-                    <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Blazing Fast</h3>
-                    <p class="text-zinc-400 text-sm">Ultra Processing on Premium Tier</p>
-                </div>
-                <div class="bg-zinc-900/50 backdrop-blur-md border border-zinc-800/50 rounded-2xl p-6 text-center hover:border-green-500/50 transition-all duration-300">
-                    <div class="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Unlimited</h3>
-                    <p class="text-zinc-400 text-sm">Pro and Premium Tiers</p>
                 </div>
             </div>
         </section>
@@ -639,14 +431,14 @@ end</textarea>
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex flex-col items-center justify-center gap-4">
                     <div class="flex items-center gap-2">
-                        <span class="text-xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">Culled</span>
+                        <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Prodigy</span>
                     </div>
-                    <p class="text-sm text-zinc-400 text-center">© 2026 Culled · All Rights Reserved.</p>
+                    <p class="text-sm text-zinc-400 text-center">© 2026 Prodigy · AI-Powered Code Obfuscation · Completely Free</p>
                     <nav>
                         <ul class="flex items-center gap-6 text-sm text-zinc-400">
-                            <li><a href="https://github.com/Xenoscurse/Culled" target="_blank" class="hover:text-white transition-colors duration-200">GitHub</a></li>
-                            <li><a href="#Pricing" class="hover:text-white transition-colors duration-200">Pricing</a></li>
+                            <li><a href="https://github.com/Xenoscurse/Prodigy" target="_blank" class="hover:text-white transition-colors duration-200">GitHub</a></li>
                             <li><a href="#Features" class="hover:text-white transition-colors duration-200">Features</a></li>
+                            <li><a href="#Dashboard" class="hover:text-white transition-colors duration-200">Dashboard</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -654,11 +446,11 @@ end</textarea>
         </footer>
     </div>
 
-    <!-- Login Modal -->
+    <!-- Login Modal (Same as before) -->
     <div id="loginModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm">
         <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-md w-full mx-4">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-white">Sign In to Culled</h3>
+                <h3 class="text-2xl font-bold text-white">Sign In to Prodigy</h3>
                 <button onclick="hideLoginModal()" class="text-zinc-500 hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -666,7 +458,7 @@ end</textarea>
                 </button>
             </div>
             
-            <p class="text-zinc-400 mb-6 text-sm">Sign in with Discord to manage your subscription and track usage.</p>
+            <p class="text-zinc-400 mb-6 text-sm">Sign in with Discord to track your usage and access all features.</p>
             
             <button onclick="loginWithDiscord()" class="w-full py-3 bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-xl transition-all duration-200 flex items-center justify-center gap-3">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -681,99 +473,30 @@ end</textarea>
         </div>
     </div>
 
-    <!-- Cancel Confirmation Modal -->
-    <div id="cancelModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm">
-        <div class="bg-zinc-900 border border-red-500/30 rounded-3xl p-8 max-w-md w-full mx-4">
-            <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </div>
-            
-            <h3 class="text-2xl font-bold text-white text-center mb-2">Cancel Subscription?</h3>
-            <p class="text-zinc-400 text-center mb-6">
-                This action cannot be undone. You'll lose access to premium features at the end of your billing period.
-            </p>
-            
-            <div class="flex gap-3">
-                <button onclick="hideCancelModal()" class="flex-1 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl transition-all duration-200">
-                    Keep Subscription
-                </button>
-                <button onclick="cancelSubscription()" class="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl transition-all duration-200">
-                    Yes, Cancel
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script>
         // =============================================
-        // ===== EASY EDIT CONFIGURATION SECTION =====
+        // ===== EASY EDIT CONFIGURATION =====
         // =============================================
         
         // ----- DISCORD OAUTH SETTINGS -----
         const DISCORD_CONFIG = {
-            CLIENT_ID: '1464021428725747733',  // Your Discord Client ID
-            REDIRECT_URI: 'https://xenoscurse.github.io/Culled/callback.html',
+            CLIENT_ID: '1464021428725747733',
+            REDIRECT_URI: 'https://xenoscurse.github.io/Prodigy/callback.html',
             SCOPES: 'identify email'
         };
 
-        // ----- PAYMENT SETTINGS -----
-        const PAYMENT_CONFIG = {
-            VENMO: '@Xenoscurse',
-            CASHAPP: '$Xenoscurse',
-            EMAIL: 'culled@proton.me'
-        };
-
-        // ----- PRICING TIERS -----
-        const TIERS = {
-            free: {
-                name: 'Free',
-                price: 0,
-                period: 'forever',
-                unlimited: false,
-                dailyQuota: 10,
-                processingSpeed: 'standard',
-                languages: ['lua', 'javascript', 'python'],
-                features: {
-                    controlFlow: false,
-                    antiTamper: false,
-                    junkCode: false,
-                    stringEncryption: true,
-                    variableRenaming: true
-                }
-            },
-            pro: {
-                name: 'Pro',
-                price: 5.99,
-                period: 'month',
-                unlimited: true,
-                dailyQuota: Infinity,
-                processingSpeed: 'fast',
-                languages: ['lua', 'javascript', 'python', 'java', 'c#', 'c++', 'ruby', 'php', 'go', 'rust', 'swift', 'kotlin', 'typescript'],
-                features: {
-                    controlFlow: true,
-                    antiTamper: false,
-                    junkCode: true,
-                    stringEncryption: true,
-                    variableRenaming: true
-                }
-            },
-            premium: {
-                name: 'Premium',
-                price: 7.99,
-                period: 'month',
-                unlimited: true,
-                dailyQuota: Infinity,
-                processingSpeed: 'ultra',
-                languages: ['lua', 'javascript', 'python', 'java', 'c#', 'c++', 'ruby', 'php', 'go', 'rust', 'swift', 'kotlin', 'typescript'],
-                features: {
-                    controlFlow: true,
-                    antiTamper: true,
-                    junkCode: true,
-                    stringEncryption: true,
-                    variableRenaming: true
-                }
+        // ----- ALL FEATURES FREE - NO PAYMENTS -----
+        const FEATURES = {
+            unlimited: true,
+            dailyQuota: Infinity,
+            processingSpeed: 'ultra',
+            languages: ['lua', 'javascript', 'python', 'java', 'c#', 'c++', 'ruby', 'php', 'go', 'rust', 'swift', 'kotlin', 'typescript'],
+            features: {
+                controlFlow: true,
+                antiTamper: true,
+                junkCode: true,
+                stringEncryption: true,
+                variableRenaming: true
             }
         };
 
@@ -802,125 +525,52 @@ def calculate_damage(damage, multiplier=1):
     return damage * multiplier
 
 message = "Hello World"
-print(message)`
+print(message)`,
+            java: `// Java Example
+public class DamageCalculator {
+    private String message = "Hello World";
+    
+    public int calculateDamage(int damage, int multiplier) {
+        return damage * (multiplier == 0 ? 1 : multiplier);
+    }
+}`,
+            csharp: `// C# Example
+using System;
+
+public class DamageCalculator {
+    private string message = "Hello World";
+    
+    public int CalculateDamage(int damage, int multiplier = 1) {
+        return damage * multiplier;
+    }
+}`,
+            cpp: `// C++ Example
+#include <iostream>
+#include <string>
+
+class DamageCalculator {
+private:
+    std::string message = "Hello World";
+    
+public:
+    int calculateDamage(int damage, int multiplier = 1) {
+        return damage * multiplier;
+    }
+};`
         };
 
         // =============================================
-        // ===== END EASY EDIT SECTION =====
+        // ===== USER STATE MANAGEMENT =====
         // =============================================
-
-        // ----- Cross-Device Storage Keys -----
+        
         const STORAGE_KEYS = {
-            USER_ID: 'culled_user_id',
-            TIER: 'culled_user_tier',
-            USAGE: 'culled_usage',
-            LICENSE_KEY: 'culled_license_key',
-            LICENSE_TIER: 'culled_license_tier',
-            DISCORD_USER: 'culled_discord_user',
-            SUBSCRIPTION: 'culled_subscription'
+            USER_ID: 'prodigy_user_id',
+            USAGE: 'prodigy_usage',
+            DISCORD_USER: 'prodigy_discord_user'
         };
 
-        // ----- License Key Storage -----
-        let activeLicenseKey = localStorage.getItem(STORAGE_KEYS.LICENSE_KEY) || null;
-        let licenseTier = localStorage.getItem(STORAGE_KEYS.LICENSE_TIER) || null;
-
-        // ----- Key Activation Functions -----
-        window.showKeyModal = function() {
-            document.getElementById('keyActivationModal').style.display = 'flex';
-        };
-
-        window.hideKeyModal = function() {
-            document.getElementById('keyActivationModal').style.display = 'none';
-        };
-
-        window.activateLicenseKey = function() {
-            const key = document.getElementById('licenseKeyInput').value.trim();
-            if (!key) {
-                alert('Please enter a license key');
-                return;
-            }
-
-            // Mock key validation - In production, you would verify against your database
-            if (key.length >= 16) {
-                // Simulate key validation
-                const tier = confirm('Is this a Pro key? Click OK for Pro, Cancel for Premium') ? 'pro' : 'premium';
-                
-                activeLicenseKey = key;
-                licenseTier = tier;
-                localStorage.setItem(STORAGE_KEYS.LICENSE_KEY, key);
-                localStorage.setItem(STORAGE_KEYS.LICENSE_TIER, tier);
-                
-                // Activate the tier
-                currentUser.tier = tier;
-                currentUser.subscription = {
-                    tier: tier,
-                    startDate: new Date().toISOString(),
-                    expiresAt: new Date(Date.now() + 30*24*60*60*1000).toISOString(),
-                    licenseKey: key
-                };
-                localStorage.setItem(STORAGE_KEYS.TIER, tier);
-                localStorage.setItem(STORAGE_KEYS.SUBSCRIPTION, JSON.stringify(currentUser.subscription));
-                
-                updateUI();
-                updateDashboard();
-                hideKeyModal();
-                
-                alert(`License key activated! You now have ${tier.toUpperCase()} features.`);
-            } else {
-                alert('Invalid license key. Please check and try again.');
-            }
-        };
-
-        // ----- Navigation to Key Modal -----
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add click handler for Key Activation in dropdown
-            const keyLink = document.querySelector('a[href="#KeyActivation"]');
-            if (keyLink) {
-                keyLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showKeyModal();
-                });
-            }
-        });
-
-        // ----- Reset Timer Function -----
-        function updateResetTimer() {
-            const now = new Date();
-            const utcMidnight = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 0, 0));
-            const diff = utcMidnight - now;
-            
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            const timerElement = document.getElementById('resetTimer');
-            if (timerElement) {
-                timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            }
-        }
-
-        // ----- Set Example Function -----
-        window.setExample = function(lang) {
-            const input = document.getElementById('inputCode');
-            if (EXAMPLES[lang]) {
-                input.value = EXAMPLES[lang];
-                const select = document.getElementById('languageSelect');
-                select.value = lang;
-                updateFileNames(lang);
-            }
-        };
-
-        function updateFileNames(lang) {
-            const ext = lang;
-            document.getElementById('inputFileName').textContent = `Input.${ext}`;
-            document.getElementById('outputFileName').textContent = `Output.${ext}`;
-        }
-
-        // ----- User State Management -----
         let currentUser = {
             id: localStorage.getItem(STORAGE_KEYS.USER_ID) || 'anonymous_' + Math.random().toString(36).substr(2, 9),
-            tier: localStorage.getItem(STORAGE_KEYS.TIER) || 'free',
-            subscription: JSON.parse(localStorage.getItem(STORAGE_KEYS.SUBSCRIPTION) || 'null'),
             usage: JSON.parse(localStorage.getItem(STORAGE_KEYS.USAGE) || '{}'),
             discordUser: JSON.parse(localStorage.getItem(STORAGE_KEYS.DISCORD_USER) || 'null')
         };
@@ -929,21 +579,13 @@ print(message)`
             localStorage.setItem(STORAGE_KEYS.USER_ID, currentUser.id);
         }
 
-        // ----- Discord OAuth -----
+        // ----- DISCORD OAUTH -----
         window.showLoginModal = function() {
             document.getElementById('loginModal').style.display = 'flex';
         };
 
         window.hideLoginModal = function() {
             document.getElementById('loginModal').style.display = 'none';
-        };
-
-        window.showCancelModal = function() {
-            document.getElementById('cancelModal').style.display = 'flex';
-        };
-
-        window.hideCancelModal = function() {
-            document.getElementById('cancelModal').style.display = 'none';
         };
 
         window.loginWithDiscord = function() {
@@ -955,13 +597,12 @@ print(message)`
         window.logout = function() {
             currentUser.discordUser = null;
             localStorage.removeItem(STORAGE_KEYS.DISCORD_USER);
-            setTier('free');
             document.getElementById('loginBtn').classList.remove('hidden');
             document.getElementById('logoutBtn').classList.add('hidden');
             updateDashboard();
         };
 
-        // ----- Check for Discord Token -----
+        // ----- CHECK FOR DISCORD TOKEN -----
         (function checkForToken() {
             const hash = window.location.hash.substring(1);
             if (hash) {
@@ -991,14 +632,11 @@ print(message)`
             }
         })();
 
-        // ----- Dashboard Functions -----
+        // ----- DASHBOARD -----
         function updateDashboard() {
             const notSignedIn = document.getElementById('notSignedInMessage');
             const signedIn = document.getElementById('signedInDashboard');
             const dashboardAuth = document.getElementById('dashboardAuth');
-            const cancelSection = document.getElementById('cancelSection');
-            const resetTimerContainer = document.getElementById('resetTimerContainer');
-            const licenseInfo = document.getElementById('licenseInfo');
             
             if (!currentUser.discordUser) {
                 notSignedIn.classList.remove('hidden');
@@ -1011,7 +649,6 @@ print(message)`
             signedIn.classList.remove('hidden');
             dashboardAuth.innerHTML = `Signed in as @${currentUser.discordUser.username}`;
             
-            // Set avatar
             const user = currentUser.discordUser;
             const avatarUrl = user.avatar 
                 ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
@@ -1022,167 +659,51 @@ print(message)`
             document.getElementById('userEmail').textContent = user.email || 'No Email Provided';
             document.getElementById('discordTag').innerHTML = `Discord · ${user.username}#${user.discriminator}`;
             
-            const tier = currentUser.tier;
-            const tierData = TIERS[tier];
-            
-            document.getElementById('currentPlanBadge').textContent = tierData.name;
-            document.getElementById('planPrice').textContent = tier === 'free' ? '$0/Forever' : `$${tierData.price}/Month`;
-            
-            // Show/hide reset timer (only for free tier)
-            if (tier === 'free') {
-                resetTimerContainer.classList.remove('hidden');
-                // Start timer update
-                updateResetTimer();
-                setInterval(updateResetTimer, 1000);
-            } else {
-                resetTimerContainer.classList.add('hidden');
-            }
-            
-            // Show license key if active
-            if (activeLicenseKey) {
-                licenseInfo.classList.remove('hidden');
-                document.getElementById('activeLicenseKey').textContent = activeLicenseKey;
-            } else {
-                licenseInfo.classList.add('hidden');
-            }
-            
-            if (currentUser.subscription) {
-                const startDate = new Date(currentUser.subscription.startDate);
-                const endDate = new Date(currentUser.subscription.expiresAt);
-                document.getElementById('subscriptionStart').textContent = `Started: ${startDate.toLocaleDateString()}`;
-                document.getElementById('subscriptionEnd').textContent = `Renews: ${endDate.toLocaleDateString()}`;
-            } else {
-                document.getElementById('subscriptionStart').textContent = 'Started: N/A';
-                document.getElementById('subscriptionEnd').textContent = 'Renews: N/A';
-            }
-            
-            if (tier !== 'free') {
-                cancelSection.classList.remove('hidden');
-            } else {
-                cancelSection.classList.add('hidden');
-            }
-            
             updateUsageStats();
         }
 
         function updateUsageStats() {
-            if (!currentUser.discordUser) return;
-            
             const today = getTodayKey();
             const usageToday = currentUser.usage[today] || 0;
-            const quota = TIERS[currentUser.tier].dailyQuota;
-            const quotaDisplay = quota === Infinity ? '∞' : quota;
-            
-            document.getElementById('usageStats').textContent = `${usageToday}/${quotaDisplay}`;
-            
-            if (quota !== Infinity) {
-                const percent = (usageToday / quota) * 100;
-                document.getElementById('usageBar').style.width = `${Math.min(percent, 100)}%`;
-            } else {
-                document.getElementById('usageBar').style.width = '0%';
-            }
+            document.getElementById('usageStats').textContent = usageToday;
         }
 
-        // ----- Usage Tracking -----
+        // ----- USAGE TRACKING (Optional - just for fun) -----
         function getTodayKey() {
             return new Date().toISOString().split('T')[0];
         }
 
-        function getRemainingUses() {
-            if (currentUser.tier !== 'free') return 'Unlimited';
-            const today = getTodayKey();
-            const usageToday = currentUser.usage[today] || 0;
-            const quota = TIERS.free.dailyQuota;
-            const remaining = Math.max(0, quota - usageToday);
-            return `${remaining}/${quota}`;
-        }
-
-        function canObfuscate() {
-            if (currentUser.tier !== 'free') return true;
-            const today = getTodayKey();
-            const usageToday = currentUser.usage[today] || 0;
-            return usageToday < TIERS.free.dailyQuota;
-        }
-
         function recordObfuscation() {
-            if (currentUser.tier === 'free') {
-                const today = getTodayKey();
-                currentUser.usage[today] = (currentUser.usage[today] || 0) + 1;
-                localStorage.setItem(STORAGE_KEYS.USAGE, JSON.stringify(currentUser.usage));
-            }
-            updateUI();
+            const today = getTodayKey();
+            currentUser.usage[today] = (currentUser.usage[today] || 0) + 1;
+            localStorage.setItem(STORAGE_KEYS.USAGE, JSON.stringify(currentUser.usage));
             updateUsageStats();
         }
 
-        // ----- Tier Management -----
-        function setTier(tier) {
-            currentUser.tier = tier;
-            localStorage.setItem(STORAGE_KEYS.TIER, tier);
-            if (tier === 'free') {
-                currentUser.subscription = null;
-                localStorage.removeItem(STORAGE_KEYS.SUBSCRIPTION);
-                localStorage.removeItem(STORAGE_KEYS.LICENSE_KEY);
-                localStorage.removeItem(STORAGE_KEYS.LICENSE_TIER);
-                activeLicenseKey = null;
-                licenseTier = null;
+        // ----- SET EXAMPLE -----
+        window.setExample = function(lang) {
+            const input = document.getElementById('inputCode');
+            if (EXAMPLES[lang]) {
+                input.value = EXAMPLES[lang];
+                const select = document.getElementById('languageSelect');
+                select.value = lang;
+                updateFileNames(lang);
             }
-            updateUI();
-            updateDashboard();
+        };
+
+        function updateFileNames(lang) {
+            const ext = lang;
+            document.getElementById('inputFileName').textContent = `Input.${ext}`;
+            document.getElementById('outputFileName').textContent = `Output.${ext}`;
         }
 
-        window.purchaseTier = function(tier) {
-            window.location.href = `pay.html?tier=${tier}`;
-        };
-
-        window.cancelSubscription = function() {
-            setTier('free');
-            currentUser.subscription = null;
-            localStorage.removeItem(STORAGE_KEYS.SUBSCRIPTION);
-            hideCancelModal();
-            updateDashboard();
-            alert('Your subscription has been cancelled. You will be downgraded to Free tier at the end of your billing period.');
-        };
-
-        window.confirmCancellation = function() {
-            hideCancelModal();
-            showCancelModal();
-        };
-
-        // ----- UI Update -----
+        // ----- UI UPDATE (All features enabled) -----
         function updateUI() {
-            const tier = currentUser.tier;
-            const tierConfig = TIERS[tier];
-            
-            const badge = document.getElementById('currentTierBadge');
-            if (badge) {
-                if (tier === 'free') {
-                    badge.innerHTML = `Free Tier · ${getRemainingUses()} Remaining`;
-                    badge.className = 'px-3 py-1.5 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-xs text-zinc-300';
-                } else if (tier === 'pro') {
-                    badge.innerHTML = `Pro Tier · Unlimited · Fast Speed`;
-                    badge.className = 'px-3 py-1.5 bg-purple-500/20 border border-purple-500/50 rounded-lg text-xs text-purple-300';
-                } else if (tier === 'premium') {
-                    badge.innerHTML = `Premium Tier · Unlimited · Ultra Speed`;
-                    badge.className = 'px-3 py-1.5 bg-blue-500/20 border border-blue-500/50 rounded-lg text-xs text-blue-300';
-                }
-            }
-            
-            const counter = document.getElementById('usageCounter');
-            if (counter) {
-                if (tier === 'free') {
-                    counter.innerHTML = `${getRemainingUses()} Uses Left`;
-                    counter.className = 'px-4 py-2 bg-zinc-800/50 rounded-lg text-sm text-zinc-300';
-                } else {
-                    counter.innerHTML = `∞ Unlimited Uses`;
-                    counter.className = 'px-4 py-2 bg-green-500/20 border border-green-500/50 rounded-lg text-sm text-green-300';
-                }
-            }
-            
             const langSelect = document.getElementById('languageSelect');
             if (langSelect) {
                 const currentValue = langSelect.value;
                 langSelect.innerHTML = '';
-                tierConfig.languages.forEach(lang => {
+                FEATURES.languages.forEach(lang => {
                     const option = document.createElement('option');
                     option.value = lang.toLowerCase();
                     let displayName = lang.charAt(0).toUpperCase() + lang.slice(1);
@@ -1190,61 +711,27 @@ print(message)`
                     option.textContent = displayName;
                     langSelect.appendChild(option);
                 });
-                
-                if (tierConfig.languages.map(l => l.toLowerCase()).includes(currentValue)) {
+                if (FEATURES.languages.map(l => l.toLowerCase()).includes(currentValue)) {
                     langSelect.value = currentValue;
                     if (EXAMPLES[currentValue]) {
                         setExample(currentValue);
                     }
                 } else {
-                    langSelect.value = tierConfig.languages[0];
-                    setExample(tierConfig.languages[0]);
+                    langSelect.value = FEATURES.languages[0];
+                    setExample(FEATURES.languages[0]);
                 }
-            }
-            
-            const advancedParams = document.getElementById('advancedParams');
-            if (advancedParams) {
-                if (tier === 'free') {
-                    advancedParams.classList.add('opacity-50', 'pointer-events-none');
-                    advancedParams.classList.remove('opacity-100', 'pointer-events-auto');
-                    const indicators = advancedParams.querySelectorAll('span');
-                    indicators.forEach(span => {
-                        const dot = span.querySelector('span');
-                        if (dot) dot.className = 'w-2 h-2 bg-gray-500 rounded-full';
-                    });
-                } else {
-                    advancedParams.classList.remove('opacity-50', 'pointer-events-none');
-                    advancedParams.classList.add('opacity-100', 'pointer-events-auto');
-                    const indicators = advancedParams.querySelectorAll('span');
-                    if (indicators[0]) {
-                        const dot = indicators[0].querySelector('span');
-                        if (dot) dot.className = tierConfig.features.controlFlow ? 'w-2 h-2 bg-green-500 rounded-full' : 'w-2 h-2 bg-gray-500 rounded-full';
-                    }
-                    if (indicators[1]) {
-                        const dot = indicators[1].querySelector('span');
-                        if (dot) dot.className = tierConfig.features.antiTamper ? 'w-2 h-2 bg-green-500 rounded-full' : 'w-2 h-2 bg-gray-500 rounded-full';
-                    }
-                    if (indicators[2]) {
-                        const dot = indicators[2].querySelector('span');
-                        if (dot) dot.className = tierConfig.features.junkCode ? 'w-2 h-2 bg-green-500 rounded-full' : 'w-2 h-2 bg-gray-500 rounded-full';
-                    }
-                }
-            }
-            
-            const freeBtn = document.querySelector('.bg-zinc-800 .w-full');
-            if (freeBtn) {
-                freeBtn.textContent = tier === 'free' ? 'Current Plan' : 'Downgrade to Free';
-                freeBtn.onclick = () => setTier('free');
             }
         }
 
-        // ----- Obfuscation Engine -----
+        // =============================================
+        // ===== AI OBFUSCATION ENGINE =====
+        // =============================================
+        
         function generateRandomName() {
             return '_0x' + Math.random().toString(16).substr(2, 6);
         }
 
-        function obfuscateCode(code, tier) {
-            const config = TIERS[tier];
+        function obfuscateCode(code) {
             let processed = code;
             
             // Variable renaming
@@ -1269,19 +756,17 @@ print(message)`
                 return `(function() return ${match} end)()`;
             });
             
-            if (config.features.junkCode) {
-                for (let i = 0; i < 3; i++) {
-                    processed = `local ${generateRandomName()}=${Math.floor(Math.random()*9999)}\n` + processed;
-                }
+            // Junk code injection
+            for (let i = 0; i < 3; i++) {
+                processed = `local ${generateRandomName()}=${Math.floor(Math.random()*9999)}\n` + processed;
             }
             
-            if (config.features.controlFlow) {
-                processed = processed.replace(/if\s+(.+?)\s+then/g, 'if (function() return $1 end)() then');
-                processed = processed.replace(/while\s+(.+?)\s+do/g, 'while (function() return $1 end)() do');
-            }
+            // Control flow obfuscation
+            processed = processed.replace(/if\s+(.+?)\s+then/g, 'if (function() return $1 end)() then');
+            processed = processed.replace(/while\s+(.+?)\s+do/g, 'while (function() return $1 end)() do');
             
-            if (config.features.antiTamper) {
-                processed = `-- Anti-Tamper Enabled
+            // Anti-tamper
+            processed = `-- Anti-Tamper Enabled
 do
     local checksum = 0x${Math.random().toString(16).substr(2,8)}
     local function verify() 
@@ -1293,12 +778,11 @@ do
 end
 
 ` + processed;
-            }
             
             return processed;
         }
 
-        // ----- Event Listeners -----
+        // ----- EVENT LISTENERS -----
         document.addEventListener('DOMContentLoaded', () => {
             updateUI();
             updateDashboard();
@@ -1314,7 +798,6 @@ end
             const copyBtn = document.getElementById('copyBtn');
             const copyText = document.getElementById('copyText');
             const copyIcon = document.getElementById('copyIcon');
-            const shieldIcon = document.getElementById('shieldIcon');
             const obfuscateBtnText = document.getElementById('obfuscateBtnText');
             
             obfuscateBtn.addEventListener('click', () => {
@@ -1324,20 +807,12 @@ end
                     return;
                 }
                 
-                if (!canObfuscate()) {
-                    alert('Daily limit reached! Upgrade to Pro or Premium for unlimited obfuscations.');
-                    return;
-                }
-                
-                const delay = { free: 800, pro: 400, premium: 200 }[currentUser.tier] || 800;
-                
                 obfuscateBtn.disabled = true;
-                obfuscateBtnText.textContent = 'Obfuscating...';
-                shieldIcon.classList.add('animate-spin');
+                obfuscateBtnText.textContent = 'AI Processing...';
                 
                 setTimeout(() => {
                     try {
-                        const obfuscated = obfuscateCode(code, currentUser.tier);
+                        const obfuscated = obfuscateCode(code);
                         outputCode.textContent = obfuscated;
                         copyBtn.classList.remove('hidden');
                         copyBtn.classList.add('flex');
@@ -1346,9 +821,8 @@ end
                         outputCode.textContent = '-- Error: Failed to obfuscate code';
                     }
                     obfuscateBtn.disabled = false;
-                    obfuscateBtnText.textContent = 'Obfuscate';
-                    shieldIcon.classList.remove('animate-spin');
-                }, delay);
+                    obfuscateBtnText.textContent = 'AI Obfuscate';
+                }, 500);
             });
             
             copyBtn.addEventListener('click', async () => {
